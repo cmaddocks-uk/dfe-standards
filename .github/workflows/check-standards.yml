@@ -8,38 +8,58 @@ on:
 jobs:
   check-standards:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Check GOV.UK Content API for standard updates
         id: check
         run: |
-          VERIFIED_DATE="2026-03-01"
-          UPDATES=""
+          python3 << 'PYEOF'
+          import urllib.request
+          import json
+          import os
+          from datetime import datetime
 
-          declare -A STANDARDS
-          STANDARDS[Broadband]="/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/broadband-internet-core-standard"
-          STANDARDS[Cyber_Security]="/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/cyber-security-core-standard"
-          STANDARDS[Leadership]="/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/digital-leadership-and-governance-core-standard"
-          STANDARDS[Filtering]="/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/filtering-and-monitoring-core-standard"
-          STANDARDS[Switching]="/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/network-switching-core-standard"
-          STANDARDS[Wireless]="/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/wireless-network-core-standard"
+          VERIFIED_DATE = "2026-03-01"
+          verified_dt = datetime.strptime(VERIFIED_DATE, "%Y-%m-%d")
 
-          for NAME in "${!STANDARDS[@]}"; do
-            PATH="${STANDARDS[$NAME]}"
-            UPDATED=$(curl -s "https://www.gov.uk/api/content${PATH}" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('public_updated_at','')[:10])" 2>/dev/null)
-            
-            if [ -n "$UPDATED" ] && [[ "$UPDATED" > "$VERIFIED_DATE" ]]; then
-              UPDATES="${UPDATES}\n- **${NAME//_/ }** — GOV.UK updated: ${UPDATED} (tool last verified: ${VERIFIED_DATE}) — https://www.gov.uk${PATH}"
-            fi
-          done
+          STANDARDS = {
+            "Broadband": "/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/broadband-internet-core-standard",
+            "Cyber Security": "/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/cyber-security-core-standard",
+            "Digital Leadership": "/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/digital-leadership-and-governance-core-standard",
+            "Filtering & Monitoring": "/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/filtering-and-monitoring-core-standard",
+            "Network Switching": "/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/network-switching-core-standard",
+            "Wireless Network": "/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/wireless-network-core-standard",
+          }
 
-          if [ -n "$UPDATES" ]; then
-            echo "UPDATES_FOUND=true" >> $GITHUB_OUTPUT
-            echo -e "UPDATES_BODY<<EOF" >> $GITHUB_OUTPUT
-            echo -e "$UPDATES" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-          else
-            echo "UPDATES_FOUND=false" >> $GITHUB_OUTPUT
-          fi
+          updates = []
+
+          for name, path in STANDARDS.items():
+            try:
+              url = f"https://www.gov.uk/api/content{path}"
+              req = urllib.request.Request(url, headers={"Accept": "application/json"})
+              with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read())
+                updated_str = data.get("public_updated_at", "")[:10]
+                updated_dt = datetime.strptime(updated_str, "%Y-%m-%d")
+                if updated_dt > verified_dt:
+                  updates.append(f"- **{name}** — GOV.UK updated: {updated_str} — https://www.gov.uk{path}")
+            except Exception as e:
+              print(f"Error checking {name}: {e}")
+
+          env_file = os.environ["GITHUB_OUTPUT"]
+          with open(env_file, "a") as f:
+            if updates:
+              f.write("UPDATES_FOUND=true\n")
+              body = "\n".join(updates)
+              f.write(f"UPDATES_BODY<<EOF\n{body}\nEOF\n")
+            else:
+              f.write("UPDATES_FOUND=false\n")
+
+          print(f"Updates found: {len(updates)}")
+          for u in updates:
+            print(u)
+          PYEOF
 
       - name: Create GitHub Issue if updates found
         if: steps.check.outputs.UPDATES_FOUND == 'true'
@@ -50,20 +70,21 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
-              labels: 'standards-update'
+              labels: ['standards-update']
             });
 
-            // Don't create duplicate issues
             const alreadyOpen = issues.some(i => i.title.includes('GOV.UK Standards Update Detected'));
             if (alreadyOpen) {
               console.log('Issue already open — skipping');
               return;
             }
 
+            const updates = `${{ steps.check.outputs.UPDATES_BODY }}`;
+
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: '⚠️ GOV.UK Standards Update Detected — Review Required',
-              body: `## DfE Standards Updated on GOV.UK\n\nThe following standards have been updated on GOV.UK since this tool was last verified (March 2026):\n\n${{ steps.check.outputs.UPDATES_BODY }}\n\n## Action Required\n\n1. Review the updated GOV.UK pages using the links above\n2. Check whether any questions, answer options or action tips in the tool need updating\n3. If changes are needed, update \`index.html\` and update the \`VERIFIED_DATE\` constant\n4. Close this issue once reviewed\n\n> This issue was created automatically by the daily standards check workflow.`,
+              body: `## DfE Standards Updated on GOV.UK\n\nThe following standards have been updated on GOV.UK since this tool was last verified (${new Date().toLocaleDateString('en-GB')}):\n\n${updates}\n\n## Action Required\n\n1. Review the updated GOV.UK pages using the links above\n2. Check whether any questions, answer options or action tips need updating\n3. If changes are needed, update \`index.html\` and update the \`VERIFIED_DATE\` constant\n4. Close this issue once reviewed\n\n> This issue was created automatically by the daily standards check workflow.`,
               labels: ['standards-update']
             });
