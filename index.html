@@ -27,6 +27,9 @@
   main{max-width:920px;margin:0 auto;padding:24px 20px}
   #screen-home main{max-width:1600px}
   #screen-results main{max-width:1600px}
+  @media(max-width:1100px){
+    #screen-home main .two-col-landing{grid-template-columns:1fr!important}
+  }
   #screen-assess main{max-width:1100px}
   #screen-details main{max-width:1100px}
 
@@ -173,19 +176,19 @@
     <div id="schoolSetup" style="max-width:1600px;margin:0 auto;padding:0 0 8px">
 
       <!-- Full-width title header -->
-      <div style="text-align:center;padding:40px 0 28px">
-        <div style="font-size:56px;margin-bottom:14px">📋</div>
-        <h1 style="font-size:48px;font-weight:800;color:var(--navy);letter-spacing:-.03em;margin-bottom:12px;line-height:1.15">DfE Digital Standards 2030 — Self-Assessment Tool</h1>
+      <div style="text-align:center;padding:24px 0 20px">
+        <div style="font-size:44px;margin-bottom:10px">📋</div>
+        <h1 style="font-size:38px;font-weight:800;color:var(--navy);letter-spacing:-.03em;margin-bottom:10px;line-height:1.2">DfE Digital Standards 2030 — Self-Assessment Tool</h1>
         <p style="font-size:18px;color:var(--muted);line-height:1.6;max-width:720px;margin:0 auto">
           A free self-assessment tool for schools working towards the <strong style="color:var(--navy)">6 core DfE Digital &amp; Technology Standards by 2030</strong>.
         </p>
       </div>
 
       <!-- Two-column layout: left = why + links, right = CTA -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;padding-bottom:40px">
+      <div class="two-col-landing" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;padding-bottom:24px">
 
         <!-- LEFT: card matching right column -->
-        <div style="background:#fff;border-radius:18px;border:1px solid var(--border);border-top:6px solid var(--navy);padding:32px;box-shadow:0 6px 32px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:20px;overflow-y:auto;max-height:calc(100vh - 240px)">
+        <div style="background:#fff;border-radius:18px;border:1px solid var(--border);border-top:6px solid var(--navy);padding:32px;box-shadow:0 6px 32px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:20px">
 
           <!-- Feature badges -->
           <div style="display:flex;flex-wrap:wrap;gap:8px">
@@ -235,7 +238,8 @@
 
         </div>
 
-        <!-- RIGHT: CTA card -->
+        <!-- RIGHT: CTA card + feedback -->
+        <div style="display:flex;flex-direction:column;gap:20px">
         <div style="background:#fff;border-radius:18px;border:1px solid var(--border);border-top:6px solid var(--teal);padding:32px;box-shadow:0 6px 32px rgba(0,0,0,.08)">
           <h2 style="font-size:24px;font-weight:700;color:var(--navy);margin-bottom:6px">Get started</h2>
           <p class="muted" style="margin-bottom:24px;font-size:15px">Takes around 15–20 minutes · 6 core standards · 28 questions</p>
@@ -252,7 +256,20 @@
             <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">6 Core 2030 Standards</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="homePills2"></div>
           </div>
-        </div>
+        </div><!-- end Get Started card -->
+
+        <!-- Feedback banner — sits below Get Started in right column -->
+        <div style="background:#f0fdfa;border:2px solid var(--teal);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px">
+          <div>
+            <p style="font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px">💬 Help us improve this tool</p>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6">Tried the tool? We'd love to know what you think. Your feedback shapes future versions and helps ANME members get the most from it.</p>
+          </div>
+          <a href="feedback.html" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;background:var(--teal);color:#fff;border-radius:10px;text-decoration:none;font-size:15px;font-weight:700" onmouseover="this.style.background='#0f766e'" onmouseout="this.style.background='var(--teal)'">
+            💬 Share Your Feedback
+          </a>
+        </div><!-- end feedback banner -->
+        </div><!-- end right flex column -->
+
       </div>
     </div>
 
