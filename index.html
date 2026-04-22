@@ -210,6 +210,7 @@
           <!-- Links row -->
           <div style="display:flex;flex-wrap:wrap;gap:8px">
             <span id="freshnessBadge" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:default" title="Checking GOV.UK for standard updates...">🔄 Checking standards…</span>
+            <a href="feedback.html" target="_blank" style="padding:5px 14px;background:#f8fafc;color:var(--teal);border-radius:20px;font-size:12px;border:1px solid var(--border);text-decoration:none">💬 Feedback</a>
             <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener" style="padding:5px 14px;background:#f8fafc;color:var(--teal);border-radius:20px;font-size:12px;border:1px solid var(--border);text-decoration:none">📖 DfE Standards ↗</a>
             <button onclick="showScreen('about')" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:pointer;font-family:inherit">ℹ️ About</button>
             <button onclick="showScreen('changelog')" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:pointer;font-family:inherit">📝 Changelog</button>
@@ -482,6 +483,7 @@
         <button class="btn" onclick="goToSchoolDetails()" style="font-size:13px;padding:8px 16px">▶ Start New Assessment</button>
       </div>
       <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+        <button class="btn-ghost" onclick="window.open('feedback.html','_blank')">💬 Give Feedback</button>
         <button class="btn-ghost" onclick="window.print()">🖨️ Print / Save as PDF</button>
         <button class="btn-ghost" onclick="exportCSV()">📥 Export Action Plan</button>
         <button class="btn-ghost" onclick="showGovernorReport()">👤 Governor Report</button>
