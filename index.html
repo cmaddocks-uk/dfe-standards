@@ -127,6 +127,66 @@
   details[open] summary span:last-child{transform:rotate(180deg)}
   details summary span:last-child{display:inline-block;transition:transform .2s}
 
+  /* ── Mobile responsive ──────────────────────────────────────────── */
+  @media(max-width:768px){
+
+    /* Nav */
+    nav .brand{font-size:12px}
+    nav .nav-btns{gap:4px}
+    .nav-btn{font-size:11px;padding:4px 8px}
+
+    /* Home landing */
+    #screen-home main{padding:12px}
+    .two-col-landing{grid-template-columns:1fr!important;gap:14px!important}
+    #screen-home h1{font-size:26px!important}
+    #screen-home .hero-subtitle{font-size:14px!important}
+
+    /* Cards padding */
+    .card{padding:16px}
+
+    /* Assessment */
+    #screen-assess main{padding:12px 14px}
+    .step-pills{gap:4px}
+    .step-pill{width:20px!important;height:8px!important}
+
+    /* Question text */
+    #questionCard p[style*="font-size:16px"]{font-size:14px!important}
+
+    /* Answer options */
+    .opt-label{padding:12px 14px!important}
+    .opt-label .opt-text{font-size:14px!important}
+
+    /* Results — stack all columns */
+    #screen-results main{padding:12px}
+    #screen-results > main > div[style*="grid-template-columns:1fr 1fr"]{
+      grid-template-columns:1fr!important
+    }
+    #screen-results > main > div[style*="grid-template-columns:55%"]{
+      grid-template-columns:1fr!important
+    }
+    #screen-results > main > div[style*="grid-template-columns:1fr 1fr;gap:16px"]{
+      grid-template-columns:1fr!important
+    }
+
+    /* Summary card score boxes */
+    #summaryCard > div[style*="grid-template-columns:1fr 1fr"]{
+      grid-template-columns:1fr!important
+    }
+
+    /* RAG boxes */
+    .rag-boxes{flex-direction:column!important;gap:8px!important}
+    .rag-box{padding:12px!important}
+
+    /* Score grid */
+    #scoreGrid{grid-template-columns:1fr!important}
+
+    /* Action plan */
+    .action-card{padding:14px!important}
+
+    /* Governor report */
+    #screen-governor main{padding:12px}
+  }
+
   @media print{
     details{open:true}
     details[open]{display:block}
