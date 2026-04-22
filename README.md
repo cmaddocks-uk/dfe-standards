@@ -66,7 +66,7 @@ This repo includes a GitHub Action (`check-standards.yml`) that runs daily at 8a
 
 Christopher Maddocks, Ex ANME Ambassador — built for the use of schools in the UK.
 
-Supported by feedback from [ANME](https://anme.co.uk) — the Association of Network Manager Educators.
+Supported by feedback from [ANME](https://anme.co.uk) — the Association of Network Manager in Education.
 
 ---
 
