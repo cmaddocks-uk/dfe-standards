@@ -1724,13 +1724,18 @@ function finishAssessment(){
   save();
 
   // Track completed assessment in GoatCounter
-  if(window.goatcounter && window.goatcounter.count){
-    window.goatcounter.count({
-      path: 'assessment-completed',
-      title: 'Assessment Completed',
-      event: true
-    });
-  }
+  try {
+    var _gc = window.goatcounter;
+    if(_gc && _gc.count){
+      _gc.count({ path: 'assessment-completed', title: 'Assessment Completed', event: true });
+    } else {
+      window.addEventListener('load', function(){
+        if(window.goatcounter && window.goatcounter.count){
+          window.goatcounter.count({ path: 'assessment-completed', title: 'Assessment Completed', event: true });
+        }
+      });
+    }
+  } catch(e){}
 
   renderResults();
   showScreen("results");
