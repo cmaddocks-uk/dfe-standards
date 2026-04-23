@@ -728,8 +728,18 @@
 
       <div class="card" style="border-left:4px solid var(--teal)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px">
-          <h3 style="font-size:15px">Version 3.2 — 22 April 2026</h3>
+          <h3 style="font-size:15px">Version 3.3 — 23 April 2026</h3>
           <span style="padding:3px 10px;background:var(--teal-light);color:var(--teal);border-radius:20px;font-size:11px;font-weight:700;border:1px solid #99f6e4">Latest</span>
+        </div>
+        <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
+          <li><strong style="color:var(--text)">Wireless w1 question updated</strong> — DfE updated the wireless standard on 17 April 2026, removing Wi-Fi 6E as the hard minimum and adding Wi-Fi 7 as the new target. Schools now need to upgrade when their current solution no longer meets their needs. Question, answer options, tips and actions updated to reflect this change.</li>
+          <li><strong style="color:var(--text)">Standards verified date updated</strong> — tool questions re-verified against GOV.UK as of April 2026.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-left:4px solid #0891b2">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+          <h3 style="font-size:15px">Version 3.2 — 22 April 2026</h3>
         </div>
         <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
           <li><strong style="color:var(--text)">Now hosted on GitHub Pages</strong> — the tool is now publicly available at <a href="https://cmaddocks-uk.github.io/dfe-standards" target="_blank" rel="noopener" style="color:var(--teal)">cmaddocks-uk.github.io/dfe-standards</a>. No download required — open the link in any browser.</li>
@@ -890,7 +900,7 @@
         </div>
         <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
           <li><strong style="color:var(--text)">Live GOV.UK freshness check</strong> — on page load, the tool now silently queries the GOV.UK Content API (a free, public government API) to check when each of the 7 DfE standard guidance pages was last updated. If any standard has been updated since this tool was last verified, a clear per-standard warning is shown with a direct link to review the changed GOV.UK page.</li>
-          <li><strong style="color:var(--text)">Dynamic verified badge</strong> — the static "Verified: Mar 2026" badge is replaced with a live status indicator: ✅ green when all standards are current, ⚠️ amber with a count when GOV.UK updates are detected, and gracefully falls back to the last verified date if offline.</li>
+          <li><strong style="color:var(--text)">Dynamic verified badge</strong> — the static "Verified: Apr 2026" badge is replaced with a live status indicator: ✅ green when all standards are current, ⚠️ amber with a count when GOV.UK updates are detected, and gracefully falls back to the last verified date if offline.</li>
           <li><strong style="color:var(--text)">API limitation notice</strong> — a clear amber notice explains that the API can detect changes but <strong>cannot automatically update the assessment questions</strong>. Questions, scoring and actions require a manual community review and are maintained by ANME.</li>
           <li><strong style="color:var(--text)">About page — Live Standards Freshness Check section</strong> — new dedicated card in the About screen explaining what the GOV.UK Content API can and cannot do, with separate "What it can do" and "What it cannot do" panels.</li>
           <li><strong style="color:var(--text)">Title layout</strong> — home screen title now spans the full width of the page as a centred header above the two-column layout, improving readability and visual hierarchy.</li>
@@ -1348,10 +1358,10 @@ const STANDARDS = [
   { id:"wireless", name:"Wireless Network", short:"Wireless", icon:"📶", color:"#0891b2",
     desc:"Reliable, centrally managed Wi-Fi coverage across all teaching and learning spaces.",
     questions:[
-      {id:"w1",type:"dfe",text:"What Wi-Fi standard are your access points running — and does your estate meet the DfE minimum of Wi-Fi 6E (802.11ax) for new installations?",
-       opts:["Wi-Fi 5 (802.11ac) or older — no upgrade plan in place","Wi-Fi 5 with plans to upgrade, or mixed Wi-Fi 5 and Wi-Fi 6 estate","Wi-Fi 6 (802.11ax) deployed across most of the school","Wi-Fi 6E (802.11ax) or Wi-Fi 7 (802.11be) deployed or actively planned"],
-       tips:["DfE requires schools to use, at a minimum, the Wi-Fi 6E standard (802.11ax). Wi-Fi 5 and below does not meet the core standard.","Upgrade plans are positive but Wi-Fi 5 does not meet the DfE standard. Prioritise Wi-Fi 6E in your next refresh cycle.","Wi-Fi 6 is an improvement but the DfE standard specifically requires Wi-Fi 6E as the minimum for new installations.","Best practice: Wi-Fi 6E (802.11ax) or Wi-Fi 7 (802.11be) meets the DfE wireless network core standard for 2030."],
-       actions:["Engage your IT support or a wireless specialist to assess your current Wi-Fi generation. Plan upgrade to Wi-Fi 6E (802.11ax) as the DfE minimum at next refresh. Use DfE/Crown Commercial frameworks for procurement. Check Connect the Classroom eligibility.","Plan migration to Wi-Fi 6E at next contract renewal. Ensure any interim Wi-Fi 6 deployment is included in a documented upgrade path. Use the DfE\'s wireless standards page for specification guidance."],example:"e.g. Aruba AP-635 (Wi-Fi 6E), Cisco Catalyst 9136 (Wi-Fi 6E), Ruckus R760 (Wi-Fi 6E), Extreme AP410C (Wi-Fi 6)"},
+      {id:"w1",type:"dfe",text:"Does your wireless network meet the needs of your staff and students — and are you working towards the latest Wi-Fi standards (Wi-Fi 6E or Wi-Fi 7) as part of your next refresh?",
+       opts:["Wi-Fi 5 or older — causing performance issues with no upgrade plan in place","Wi-Fi 5 or older — still meeting current needs but an upgrade is planned at next refresh","Wi-Fi 6 deployed — meeting current needs with a documented path to Wi-Fi 6E or Wi-Fi 7","Wi-Fi 6E or Wi-Fi 7 deployed or actively planned — fully aligned with the DfE wireless standard"],
+       tips:["DfE requires schools to upgrade their wireless network when it no longer meets their needs, working towards Wi-Fi 7 as the latest standard. Performance issues indicate the standard is not being met.","Wi-Fi 5 can still meet needs in some schools — the DfE standard is to upgrade when performance is insufficient, targeting Wi-Fi 6E or Wi-Fi 7 at next refresh.","Wi-Fi 6 is a solid platform. DfE guidance targets Wi-Fi 6E and Wi-Fi 7 — document your upgrade path for the next refresh cycle.","Best practice: Wi-Fi 6E or Wi-Fi 7 fully meets the DfE wireless network standard. Wi-Fi 7 (802.11be) is the latest standard approved by the Wi-Fi Alliance."],
+       actions:["Assess your current wireless performance against the needs of staff and students. If performance is insufficient, plan an upgrade to Wi-Fi 6E or Wi-Fi 7 at your earliest opportunity. Use DfE/Crown Commercial frameworks for procurement. Check Connect the Classroom eligibility.","Plan migration to Wi-Fi 6E or Wi-Fi 7 at next contract renewal. Document your upgrade path and timeline. Use the DfE wireless standards page for specification guidance."],example:"e.g. Aruba AP-635 (Wi-Fi 6E), Cisco Catalyst 9136 (Wi-Fi 6E), Ruckus R760 (Wi-Fi 6E), Ubiquiti U7 Pro (Wi-Fi 7), Aruba AP-770 (Wi-Fi 7)"},
       {id:"w2",type:"dfe",text:"Do you have full wireless coverage across all teaching spaces, specialist rooms and external areas where devices are used — verified by a heat mapping survey?",
        opts:["Limited or no coverage in teaching areas — significant dead spots affecting teaching","Partial coverage with notable gaps in teaching or learning spaces — some areas cannot reliably connect","Good coverage across most teaching spaces with only minor gaps — external areas or some specialist rooms not yet covered","Full coverage throughout all buildings and external areas where required, verified using a wireless heat mapping survey"],
        tips:["DfE requires a fully functional wireless signal in all areas where mobile devices are used. Limited coverage fails the standard.","Dead spots disrupt teaching and learning. DfE guidance recommends heat mapping to identify and resolve coverage gaps.","Good coverage with minor gaps — DfE expects full coverage including external areas where required. Plan to close remaining gaps.","Best practice: full coverage designed using wireless heat mapping meets the DfE standard for wireless signal coverage."],
@@ -2726,7 +2736,7 @@ function viewAssessment(id){
 // GOV.UK Content API. Detects when a page was last changed — but CANNOT
 // auto-update questions, scoring or actions. Those require manual community review.
 
-const VERIFIED_DATE = new Date("2026-03-01"); // Date this tool's questions were last reviewed
+const VERIFIED_DATE = new Date("2026-04-23"); // Date this tool's questions were last reviewed
 
 const GOV_PATHS = {
   broadband:  "/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/broadband-internet-core-standard",
@@ -2773,7 +2783,7 @@ async function checkFreshness() {
 
   // Update badge
   if (errors.length === results.length) {
-    badge.textContent = "📋 Verified: Mar 2026";
+    badge.textContent = "📋 Verified: Apr 2026";
     badge.title = "Could not reach GOV.UK to check for updates — using last verified date";
     return;
   }
@@ -2804,7 +2814,7 @@ async function checkFreshness() {
         <div style="font-size:12px;font-weight:700;color:var(--navy)">${r.name}</div>
         <div style="font-size:11px;color:var(--amber);margin-top:2px">
           GOV.UK updated: <strong>${r.updated.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}</strong>
-          — questions in this tool were last verified Mar 2026
+          — questions in this tool were last verified Apr 2026
         </div>
       </div>
       <a href="https://www.gov.uk${r.path}" target="_blank" rel="noopener"
@@ -2823,7 +2833,7 @@ async function checkFreshness() {
 // Run on load — non-blocking
 checkFreshness().catch(() => {
   const badge = document.getElementById("freshnessBadge");
-  if (badge) { badge.textContent = "📋 Verified: Mar 2026"; badge.title = "Offline — using last verified date"; }
+  if (badge) { badge.textContent = "📋 Verified: Apr 2026"; badge.title = "Offline — using last verified date"; }
 });
 
 
