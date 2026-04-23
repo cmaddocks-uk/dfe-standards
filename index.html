@@ -244,6 +244,17 @@
   <main>
     <div id="schoolSetup" style="max-width:1600px;margin:0 auto;padding:0 0 8px">
 
+      <!-- Mobile warning banner -->
+      <div id="mobileBanner" style="display:none;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 16px;margin-bottom:16px;text-align:center">
+        <p style="font-size:13px;color:#92400e;line-height:1.5">📱 <strong>Best viewed on a laptop or desktop.</strong> You can browse on mobile, but we recommend completing the full assessment on a larger screen for the best experience.</p>
+      </div>
+
+      <script>
+        if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+          document.getElementById('mobileBanner').style.display='block';
+        }
+      </script>
+
       <!-- Full-width title header -->
       <div style="text-align:center;padding:24px 0 20px">
         <div style="font-size:44px;margin-bottom:10px">📋</div>
