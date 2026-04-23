@@ -299,6 +299,13 @@
             <button onclick="showScreen('changelog')" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:pointer;font-family:inherit">📝 Changelog</button>
           </div>
 
+          <!-- Permanent freshness note -->
+          <div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:4px">
+            <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0">
+              <strong style="color:var(--text)">ℹ️ About this check:</strong> This tool connects to the GOV.UK Content API to detect when a standard's guidance page was last updated. It can tell you that a change has occurred — but it <strong>cannot automatically update the assessment questions</strong>. Questions, scoring and actions are maintained manually and reviewed by the ANME community. If an update is flagged, check the relevant GOV.UK page and <a href="https://anme.co.uk" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none">contact ANME ↗</a> if you believe the questions need revising.
+            </p>
+          </div>
+
           <!-- Freshness panel — shown only when updates detected -->
           <div id="freshnessPanel" style="display:none;background:#fffbeb;border-radius:12px;border:1px solid var(--amber-border);padding:18px 20px">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
