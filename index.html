@@ -1722,6 +1722,16 @@ function finishAssessment(){
   assessments.push(a);
   currentResult=a;
   save();
+
+  // Track completed assessment in GoatCounter
+  if(window.goatcounter && window.goatcounter.count){
+    window.goatcounter.count({
+      path: 'assessment-completed',
+      title: 'Assessment Completed',
+      event: true
+    });
+  }
+
   renderResults();
   showScreen("results");
 }
