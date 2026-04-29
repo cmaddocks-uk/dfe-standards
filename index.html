@@ -21,6 +21,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  /* Header nav buttons */
+  .hdr-nav-btn{
+    background:transparent;
+    color:rgba(255,255,255,.85);
+    border:none;
+    padding:6px 14px;
+    font-size:13px;
+    font-weight:500;
+    border-radius:6px;
+    cursor:pointer;
+    text-decoration:none;
+    font-family:inherit;
+    transition:all .15s;
+    display:inline-flex;
+    align-items:center;
+  }
+  .hdr-nav-btn:hover{
+    background:rgba(255,255,255,.1);
+    color:#fff;
+  }
   :root{
     --navy:#0c1a2e;--teal:#0d9488;--teal-light:#f0fdfa;
     --bg:#f1f5f9;--white:#fff;--border:#e2e8f0;
@@ -136,6 +157,7 @@
 
   /* ── Mobile responsive ──────────────────────────────────────────── */
   @media(max-width:768px){
+    .hdr-nav-btn{font-size:12px;padding:5px 10px}
 
     /* Nav */
     nav .brand{font-size:12px}
@@ -239,22 +261,25 @@
 </head>
 <body>
 
-<!-- Top header bar -->
-<div style="background:var(--navy);color:#fff;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:3px solid var(--teal)">
+<!-- Top header bar with navigation -->
+<div style="background:var(--navy);color:#fff;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-bottom:3px solid var(--teal)">
   <div style="display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600">
     <span style="font-size:18px">📋</span>
     <span>DfE Digital Standards 2030 — Self-Assessment Tool</span>
     <span style="opacity:.5;font-weight:400">|</span>
     <span style="opacity:.7;font-weight:400;font-size:13px">UK Education Establishments</span>
   </div>
+  <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+    <button onclick="showScreen('home')" class="hdr-nav-btn">Home</button>
+    <button onclick="startAssessment()" class="hdr-nav-btn">Start Assessment</button>
+    <button onclick="initTrustView()" class="hdr-nav-btn">Trust View</button>
+    <a href="feedback.html" target="_blank" rel="noopener noreferrer" class="hdr-nav-btn">Feedback</a>
+    <button onclick="showScreen('about')" class="hdr-nav-btn">About</button>
+    <button onclick="showScreen('changelog')" class="hdr-nav-btn">Changelog</button>
+  </div>
 </div>
 
-<!-- NAV — hidden on home screen -->
-<nav id="mainNav" style="display:none">
-  <div style="width:120px"></div>
-  <div class="brand" style="position:absolute;left:50%;transform:translateX(-50%)">📋 DfE Digital Standards 2030 — Self-Assessment Tool</div>
-  <div class="nav-btns" id="navBtns"></div>
-</nav>
+<!-- Old nav removed — header above handles navigation across all screens -->
 
 <!-- ══════════════════════════════════════ HOME ══ -->
 <div id="screen-home" class="screen">
