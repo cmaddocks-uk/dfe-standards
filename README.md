@@ -1,5 +1,7 @@
 # DfE Digital Standards 2030 — Self-Assessment Tool
 
+[![Security Policy](https://img.shields.io/badge/security-policy-green)](SECURITY.md)
+
 A free, browser-based self-assessment tool for schools and colleges in England working towards the **6 core DfE Digital & Technology Standards by 2030**.
 
 🔗 **Live tool:** [cmaddocks-uk.github.io/dfe-standards](https://cmaddocks-uk.github.io/dfe-standards)
@@ -66,7 +68,15 @@ This repo includes a GitHub Action (`check-standards.yml`) that runs daily at 8a
 
 Christopher Maddocks, Ex ANME Ambassador — built for the use of schools in the UK.
 
-Supported by feedback from [ANME](https://anme.co.uk) — the Association of Network Manager in Education.
+Supported by feedback from [ANME](https://anme.co.uk) — the Association of Network Manager Educators.
+
+---
+
+## Security
+
+The tool is hardened against common single-page-app risks: a Content Security Policy locks down all remote content (only Chart.js, GoatCounter analytics and the GOV.UK Content API are permitted — everything else is blocked), share link payloads are validated against a schema before use (preventing prototype pollution and type confusion), all user input is HTML-escaped before rendering, and all external links use `rel="noopener noreferrer"`.
+
+See [SECURITY.md](SECURITY.md) for the full threat model and how to report issues. An automated security test suite (`security-test.js`) covers escapeHtml, share link validation, CSP and link hardening — run it with `node security-test.js`.
 
 ---
 

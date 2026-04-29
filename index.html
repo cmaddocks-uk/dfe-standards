@@ -6,6 +6,12 @@
 <title>DfE Digital Standards 2030 — Self-Assessment Tool</title>
 <meta name="description" content="A free self-assessment tool for schools in England working towards the 6 core DfE Digital & Technology Standards by 2030. RAG scores, action plan and governor report — no account needed.">
 
+<!-- Security headers -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://dfe-standards.goatcounter.com https://www.gov.uk; font-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), usb=(), payment=(), fullscreen=(self)">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
 <!-- Open Graph / LinkedIn -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cmaddocks-uk.github.io/dfe-standards">
@@ -294,8 +300,8 @@
           <!-- Links row -->
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px">
             <span id="freshnessBadge" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:default" title="Checking GOV.UK for standard updates...">🔄 Checking standards…</span>
-            <a href="feedback.html" target="_blank" style="padding:5px 14px;background:#f8fafc;color:var(--teal);border-radius:20px;font-size:12px;border:1px solid var(--border);text-decoration:none">💬 Feedback</a>
-            <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener" style="padding:5px 14px;background:#f8fafc;color:var(--teal);border-radius:20px;font-size:12px;border:1px solid var(--border);text-decoration:none">📖 DfE Standards ↗</a>
+            <a href="feedback.html" target="_blank" rel="noopener noreferrer" style="padding:5px 14px;background:#f8fafc;color:var(--teal);border-radius:20px;font-size:12px;border:1px solid var(--border);text-decoration:none">💬 Feedback</a>
+            <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer" style="padding:5px 14px;background:#f8fafc;color:var(--teal);border-radius:20px;font-size:12px;border:1px solid var(--border);text-decoration:none">📖 DfE Standards ↗</a>
             <button onclick="showScreen('about')" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:pointer;font-family:inherit">ℹ️ About</button>
             <button onclick="showScreen('changelog')" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:pointer;font-family:inherit">📝 Changelog</button>
           </div>
@@ -303,7 +309,7 @@
           <!-- Permanent freshness note -->
           <div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:4px">
             <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0">
-              <strong style="color:var(--text)">ℹ️ About this check:</strong> This tool connects to the GOV.UK Content API to detect when a standard's guidance page was last updated. It can tell you that a change has occurred — but it <strong>cannot automatically update the assessment questions</strong>. Questions, scoring and actions are maintained manually and reviewed by the ANME community. If an update is flagged, check the relevant GOV.UK page and <a href="https://anme.co.uk" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none">contact ANME ↗</a> if you believe the questions need revising.
+              <strong style="color:var(--text)">ℹ️ About this check:</strong> This tool connects to the GOV.UK Content API to detect when a standard's guidance page was last updated. It can tell you that a change has occurred — but it <strong>cannot automatically update the assessment questions</strong>. Questions, scoring and actions are maintained manually and reviewed by the ANME community. If an update is flagged, check the relevant GOV.UK page and <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer" style="color:var(--teal);text-decoration:none">contact ANME ↗</a> if you believe the questions need revising.
             </p>
           </div>
 
@@ -319,7 +325,7 @@
                 <strong>ℹ️ About this check:</strong> This tool connects to the GOV.UK Content API to detect when a standard's guidance page was last updated.
                 It can tell you that a change has occurred — but it <strong>cannot automatically update the assessment questions</strong>.
                 Questions, scoring and actions are maintained manually and reviewed by the ANME community. If an update is flagged, check the relevant GOV.UK page and
-                <a href="https://anme.co.uk" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none">contact ANME ↗</a> if you believe the questions need revising.
+                <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer" style="color:var(--teal);text-decoration:none">contact ANME ↗</a> if you believe the questions need revising.
               </p>
             </div>
           </div>
@@ -352,7 +358,7 @@
             <p style="font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px">💬 Help us improve this tool</p>
             <p style="font-size:13px;color:var(--muted);line-height:1.6">Tried the tool? We'd love to know what you think. Your feedback shapes future versions and helps the school IT community get the most from it.</p>
           </div>
-          <a href="feedback.html" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;background:var(--teal);color:#fff;border-radius:10px;text-decoration:none;font-size:15px;font-weight:700" onmouseover="this.style.background='#0f766e'" onmouseout="this.style.background='var(--teal)'">
+          <a href="feedback.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;background:var(--teal);color:#fff;border-radius:10px;text-decoration:none;font-size:15px;font-weight:700" onmouseover="this.style.background='#0f766e'" onmouseout="this.style.background='var(--teal)'">
             💬 Share Your Feedback
           </a>
         </div><!-- end feedback banner -->
@@ -560,7 +566,7 @@
               <h3 style="margin-bottom:2px;font-size:15px">How England's Schools Are Doing</h3>
               <p class="muted" style="font-size:12px">National picture — how your scores compare to the sector.</p>
             </div>
-            <a href="https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025" target="_blank"
+            <a href="https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025" target="_blank" rel="noopener noreferrer"
               style="font-size:11px;color:var(--teal);text-decoration:none;white-space:nowrap">Sources ↗</a>
           </div>
           <div id="benchmarkGrid"></div>
@@ -760,7 +766,7 @@
           <h3 style="font-size:15px">Version 3.2 — 22 April 2026</h3>
         </div>
         <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
-          <li><strong style="color:var(--text)">Now hosted on GitHub Pages</strong> — the tool is now publicly available at <a href="https://cmaddocks-uk.github.io/dfe-standards" target="_blank" rel="noopener" style="color:var(--teal)">cmaddocks-uk.github.io/dfe-standards</a>. No download required — open the link in any browser.</li>
+          <li><strong style="color:var(--text)">Now hosted on GitHub Pages</strong> — the tool is now publicly available at <a href="https://cmaddocks-uk.github.io/dfe-standards" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">cmaddocks-uk.github.io/dfe-standards</a>. No download required — open the link in any browser.</li>
           <li><strong style="color:var(--text)">Share Results now works as a real link</strong> — the 🔗 Share Results button now generates a proper URL pointing to the hosted tool with scores encoded. Anyone clicking the link will open the tool with the full results loaded — no need for them to have the file downloaded locally.</li>
           <li><strong style="color:var(--text)">Trust View share instructions updated</strong> — the Trust View guidance now references the hosted URL so the share workflow makes sense end to end.</li>
         </ul>
@@ -1027,9 +1033,9 @@
     <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);text-align:center">
       <p style="font-size:12px;color:#94a3b8">
         Built by Christopher Maddocks, Ex ANME Ambassador · For the use of Schools in the UK<br>
-        <a href="https://anme.co.uk" target="_blank" style="color:var(--teal);text-decoration:none">ANME ↗</a>
+        <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer" style="color:var(--teal);text-decoration:none">ANME ↗</a>
         &nbsp;·&nbsp;
-        <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" style="color:var(--teal);text-decoration:none">DfE Standards ↗</a>
+        <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer" style="color:var(--teal);text-decoration:none">DfE Standards ↗</a>
       </p>
     </div>
   </main>
@@ -1213,7 +1219,7 @@
         </div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6">
           If the freshness check flags a change and you believe the questions need updating,
-          please <a href="https://anme.co.uk" target="_blank" rel="noopener" style="color:var(--teal)">contact the ANME community ↗</a>.
+          please <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">contact the ANME community ↗</a>.
           No data is sent to GOV.UK — the check is read-only and requires no authentication.
         </p>
       </div>
@@ -1221,13 +1227,13 @@
       <div class="card">
         <h3 style="margin-bottom:12px">Useful Links</h3>
         <div style="display:flex;flex-direction:column;gap:8px">
-          <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">DfE Digital &amp; Technology Standards</span><span style="color:var(--teal);font-size:12px">↗</span></a>
-          <a href="https://www.gov.uk/guidance/plan-technology-for-your-school" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">DfE Plan Technology for Your School</span><span style="color:var(--teal);font-size:12px">↗</span></a>
-          <a href="https://www.gov.uk/guidance/connect-the-classroom" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">Connect the Classroom — funding for schools</span><span style="color:var(--teal);font-size:12px">↗</span></a>
-          <a href="https://www.ncsc.gov.uk/section/education-skills/schools" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">NCSC Cyber Security Guidance for Schools</span><span style="color:var(--teal);font-size:12px">↗</span></a>
-          <a href="https://saferinternet.org.uk/guide-and-resource/teachers-and-school-staff/appropriate-filtering-and-monitoring" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">UK Safer Internet Centre — Filtering &amp; Monitoring</span><span style="color:var(--teal);font-size:12px">↗</span></a>
-          <a href="https://www.get-help-buying-for-schools.service.gov.uk" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">Get Help Buying for Schools</span><span style="color:var(--teal);font-size:12px">↗</span></a>
-          <a href="https://anme.co.uk" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">ANME — Association of Network Manager Educators</span><span style="color:var(--teal);font-size:12px">↗</span></a>
+          <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">DfE Digital &amp; Technology Standards</span><span style="color:var(--teal);font-size:12px">↗</span></a>
+          <a href="https://www.gov.uk/guidance/plan-technology-for-your-school" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">DfE Plan Technology for Your School</span><span style="color:var(--teal);font-size:12px">↗</span></a>
+          <a href="https://www.gov.uk/guidance/connect-the-classroom" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">Connect the Classroom — funding for schools</span><span style="color:var(--teal);font-size:12px">↗</span></a>
+          <a href="https://www.ncsc.gov.uk/section/education-skills/schools" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">NCSC Cyber Security Guidance for Schools</span><span style="color:var(--teal);font-size:12px">↗</span></a>
+          <a href="https://saferinternet.org.uk/guide-and-resource/teachers-and-school-staff/appropriate-filtering-and-monitoring" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">UK Safer Internet Centre — Filtering &amp; Monitoring</span><span style="color:var(--teal);font-size:12px">↗</span></a>
+          <a href="https://www.get-help-buying-for-schools.service.gov.uk" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">Get Help Buying for Schools</span><span style="color:var(--teal);font-size:12px">↗</span></a>
+          <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid var(--border)"><span style="font-size:13px">ANME — Association of Network Manager Educators</span><span style="color:var(--teal);font-size:12px">↗</span></a>
         </div>
       </div>
 
@@ -1430,6 +1436,46 @@ let answers = {}, step = 0;
 let assessments = [], currentResult = null, radarChartInst = null;
 
 // ─── Persistence ──────────────────────────────────────────────────────────────
+// ─── Security helpers ─────────────────────────────────────────────────────────
+function escapeHtml(str) {
+  if(str == null) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/\//g, "&#x2F;")
+    .replace(/`/g, "&#x60;")
+    .replace(/=/g, "&#x3D;");
+}
+
+function sanitiseSharePayload(payload) {
+  // Validate structure and types — reject anything unexpected
+  if(typeof payload !== 'object' || payload === null) return null;
+  if(payload.v !== 1) return null;
+  if(!Array.isArray(payload.ans)) return null;
+  if(payload.ans.length > 20) return null; // max standards
+  for(const row of payload.ans) {
+    if(!Array.isArray(row)) return null;
+    if(row.length > 10) return null; // max questions per standard
+    for(const val of row) {
+      if(typeof val !== 'number' || val < 0 || val > 3) return null;
+    }
+  }
+  return {
+    v: 1,
+    ans: payload.ans,
+    d: typeof payload.d === 'string' ? payload.d.slice(0, 30) : '',
+    s: typeof payload.s === 'string' ? payload.s.slice(0, 200) : '',
+    ph: typeof payload.ph === 'string' ? payload.ph.slice(0, 50) : '',
+    la: typeof payload.la === 'string' ? payload.la.slice(0, 200) : '',
+    a: typeof payload.a === 'string' ? payload.a.slice(0, 100) : '',
+    j: typeof payload.j === 'string' ? payload.j.slice(0, 100) : '',
+    l: payload.l === 1 ? 1 : 0
+  };
+}
+
 function save() {
   try {
     localStorage.setItem("dfe_school",      school);
@@ -1675,7 +1721,7 @@ function renderStep(){
       ${std.ofsted?`<span style="display:inline-flex;align-items:center;gap:5px;margin-top:6px;padding:3px 10px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:20px;font-size:11px;font-weight:700">⚠ Ofsted scrutiny area — inspectors actively ask about this standard</span>`:""}
       ${std.id==="filtering"?`<span style="display:inline-flex;align-items:center;gap:5px;margin-top:6px;padding:3px 10px;background:#ede9fe;color:#6d28d9;border:1px solid #c4b5fd;border-radius:20px;font-size:11px;font-weight:700">⚠ Schools should already be meeting this standard — not a 2030 target</span>`:""}
     </div>
-    <a href="${srcUrl}" target="_blank" rel="noopener"
+    <a href="${srcUrl}" target="_blank" rel="noopener noreferrer"
       style="flex-shrink:0;font-size:11px;color:var(--teal);text-decoration:none;white-space:nowrap;padding:4px 10px;border:1px solid var(--teal);border-radius:20px;display:inline-flex;align-items:center;gap:4px;margin-top:4px">
       📖 DfE Source
     </a>
@@ -1694,7 +1740,7 @@ function renderStep(){
       const sel=answers[q.id]===oi;
       const score=oi===0?"–":oi===3?"✓ Best":`${oi}/3`;
       const tip=(q.tips&&q.tips[oi])||"";
-      const tipHTML=tip?`<span class="opt-info"><button class="opt-info-btn" tabindex="-1">i</button><span class="opt-tooltip">${tip}<a href="${srcUrl}" target="_blank" rel="noopener">📖 View DfE standard →</a></span></span>`:"";
+      const tipHTML=tip?`<span class="opt-info"><button class="opt-info-btn" tabindex="-1">i</button><span class="opt-tooltip">${tip}<a href="${srcUrl}" target="_blank" rel="noopener noreferrer">📖 View DfE standard →</a></span></span>`:"";
       const LABELS=["Not in place","Developing","Mostly in place","Fully meeting standard"];
       const LABEL_COLOURS=["var(--red)","var(--amber)","#c2410c","var(--green)"];
       const LABEL_BG=["var(--red-bg)","var(--amber-bg)","#fff7ed","var(--green-bg)"];
@@ -1981,7 +2027,7 @@ function renderResults(){
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <span style="background:var(--navy);color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${i+1}</span>
           <span style="font-weight:700;font-size:15px">${s.icon} ${s.name}</span>${tagHTML(sc.rag)}
-          <a href="${srcUrl}" target="_blank" rel="noopener" style="font-size:11px;color:var(--teal);text-decoration:none;padding:2px 8px;border:1px solid var(--teal);border-radius:20px;white-space:nowrap">📖 DfE guidance ↗</a>
+          <a href="${srcUrl}" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:var(--teal);text-decoration:none;padding:2px 8px;border:1px solid var(--teal);border-radius:20px;white-space:nowrap">📖 DfE guidance ↗</a>
         </div>
         <span style="font-size:22px;font-weight:800;color:${RAG_COLOR[sc.rag]}">${Math.round(sc.pct*100)}%</span>
       </div>
@@ -2361,8 +2407,10 @@ function loadSharedResult(){
   if(!hash.startsWith('#share=')) return false;
   try {
     const encoded = hash.slice(7);
-    const payload = JSON.parse(decodeURIComponent(escape(atob(encoded))));
-    if(payload.v !== 1) return false;
+    if(encoded.length > 4096) return false; // reject oversized payloads
+    const raw = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+    const payload = sanitiseSharePayload(raw);
+    if(!payload) return false;
 
     // Reconstruct answers
     const answers = {};
@@ -2474,7 +2522,10 @@ function loadTrustFromUrl(){
   if(!urlVal){ if(errEl){errEl.textContent="Please paste a shared URL first.";errEl.style.display="block";} return; }
   try{
     const hash=urlVal.includes('#share=')?urlVal.split('#share=')[1]:urlVal;
-    const payload=JSON.parse(decodeURIComponent(escape(atob(hash))));
+    if(hash.length > 4096) throw new Error('Payload too large');
+    const raw=JSON.parse(decodeURIComponent(escape(atob(hash))));
+    const payload=sanitiseSharePayload(raw);
+    if(!payload) throw new Error('Invalid share payload');
     if(payload.v!==1) throw new Error("invalid");
     trustData[activeTrustIdx].schools.push({name:payload.s,phase:payload.ph||"",scores:payload.sc});
     document.getElementById("trustShareUrl").value="";
@@ -2842,7 +2893,7 @@ async function checkFreshness() {
           — questions in this tool were last verified Apr 2026
         </div>
       </div>
-      <a href="https://www.gov.uk${r.path}" target="_blank" rel="noopener"
+      <a href="https://www.gov.uk${r.path}" target="_blank" rel="noopener noreferrer"
          style="font-size:11px;color:var(--teal);text-decoration:none;white-space:nowrap;flex-shrink:0;margin-top:2px">
         View on GOV.UK ↗
       </a>
@@ -2881,13 +2932,13 @@ window.addEventListener("beforeunload", e => {
   <footer id="siteFooter" style="display:none;background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:16px 24px;font-size:12px;margin-top:40px">
     Built by <strong style="color:#fff">Christopher Maddocks</strong>, Ex ANME Ambassador &nbsp;·&nbsp;
     For the use of Schools in the UK &nbsp;·&nbsp;
-    <a href="https://anme.co.uk" target="_blank" rel="noopener" style="color:#5eead4;text-decoration:none">ANME ↗</a>
+    <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer" style="color:#5eead4;text-decoration:none">ANME ↗</a>
     &nbsp;·&nbsp;
-    <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener" style="color:#5eead4;text-decoration:none">DfE Standards ↗</a>
+    <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer" style="color:#5eead4;text-decoration:none">DfE Standards ↗</a>
   </footer>
 <!-- Buy Me a Coffee floating button -->
 <div style="position:fixed;bottom:24px;right:24px;z-index:9999">
-  <a href="https://buymeacoffee.com/cmaddocks" target="_blank" rel="noopener"
+  <a href="https://buymeacoffee.com/cmaddocks" target="_blank" rel="noopener noreferrer"
      style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#FFDD00;color:#000;border-radius:50px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .15s,box-shadow .15s"
      onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.25)'"
      onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.2)'">
