@@ -1569,6 +1569,7 @@ function showScreen(id){
 
 function renderNav(screen){
   const btns = document.getElementById("navBtns");
+  if(!btns) return; // header now handles navigation across all screens
   let html = "";
   if(screen==="assess"){
     html = `<button class="nav-btn" onclick="showScreen('home')">✕ Exit</button>`;
