@@ -239,6 +239,16 @@
 </head>
 <body>
 
+<!-- Top header bar -->
+<div style="background:var(--navy);color:#fff;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:3px solid var(--teal)">
+  <div style="display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600">
+    <span style="font-size:18px">📋</span>
+    <span>DfE Digital Standards 2030 — Self-Assessment Tool</span>
+    <span style="opacity:.5;font-weight:400">|</span>
+    <span style="opacity:.7;font-weight:400;font-size:13px">UK Education Establishments</span>
+  </div>
+</div>
+
 <!-- NAV — hidden on home screen -->
 <nav id="mainNav" style="display:none">
   <div style="width:120px"></div>
@@ -349,6 +359,19 @@
           <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px">
             <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">6 Core 2030 Standards</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="homePills2"></div>
+          </div>
+
+          <!-- Companion tool card -->
+          <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:20px">
+            <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">Companion Tool</p>
+            <a href="https://cmaddocks-uk.github.io/cyber-response" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--teal-light);border:1px solid #99f6e4;border-radius:10px;text-decoration:none;transition:all .15s" onmouseover="this.style.background='#ccfbf1';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='var(--teal-light)';this.style.borderColor='#99f6e4'">
+              <div style="font-size:28px;flex-shrink:0">🛡️</div>
+              <div style="flex:1;min-width:0">
+                <p style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px">Cyber Incident Response Planner</p>
+                <p style="font-size:12px;color:var(--muted);line-height:1.5">Build a tailored Cyber Incident Response Plan mapped to NCSC, DfE Digital Standards 2030, RPA and Ofsted guidance.</p>
+              </div>
+              <span style="color:var(--teal);font-size:18px;flex-shrink:0">→</span>
+            </a>
           </div>
         </div><!-- end Get Started card -->
 
