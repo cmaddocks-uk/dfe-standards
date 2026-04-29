@@ -22,26 +22,29 @@
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  /* Header nav buttons */
-  .hdr-nav-btn{
-    background:transparent;
-    color:rgba(255,255,255,.85);
-    border:none;
-    padding:6px 14px;
-    font-size:13px;
-    font-weight:500;
-    border-radius:6px;
-    cursor:pointer;
-    text-decoration:none;
+  /* Header — matches cyber-response tool */
+  .container{max-width:1280px;margin:0 auto;padding:0 20px}
+  header.topbar{
+    background:var(--navy); color:#fff; padding:0; border-bottom:3px solid var(--teal);
+    position:sticky; top:0; z-index:40;
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; flex-wrap:wrap; padding:10px 0;
+  }
+  .brand{display:flex; align-items:center; gap:8px; font-weight:700; font-size:14px; color:#fff; letter-spacing:.01em}
+  .brand .logo{font-size:18px}
+  .brand .pipe{opacity:.4; padding:0 4px}
+  .brand .sub{opacity:.85; font-weight:500; font-size:13px}
+  nav.tabs{display:flex; gap:2px; flex-wrap:wrap}
+  nav.tabs button{
+    background:transparent; color:#fff; border:1px solid transparent;
+    padding:7px 12px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:600;
     font-family:inherit;
     transition:all .15s;
-    display:inline-flex;
-    align-items:center;
   }
-  .hdr-nav-btn:hover{
-    background:rgba(255,255,255,.1);
-    color:#fff;
-  }
+  nav.tabs button:hover{background:rgba(255,255,255,.1)}
+  nav.tabs button.active{background:#fff; color:var(--navy)}
   :root{
     --navy:#0c1a2e;--teal:#0d9488;--teal-light:#f0fdfa;
     --bg:#f1f5f9;--white:#fff;--border:#e2e8f0;
@@ -157,7 +160,6 @@
 
   /* ── Mobile responsive ──────────────────────────────────────────── */
   @media(max-width:768px){
-    .hdr-nav-btn{font-size:12px;padding:5px 10px}
 
     /* Nav */
     nav .brand{font-size:12px}
@@ -262,22 +264,24 @@
 <body>
 
 <!-- Top header bar with navigation -->
-<div style="background:var(--navy);color:#fff;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-bottom:3px solid var(--teal)">
-  <div style="display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600">
-    <span style="font-size:18px">📋</span>
-    <span>DfE Digital Standards 2030 — Self-Assessment Tool</span>
-    <span style="opacity:.5;font-weight:400">|</span>
-    <span style="opacity:.7;font-weight:400;font-size:13px">UK Education Establishments</span>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <span class="logo">📋</span>
+      <span>DfE Digital Standards 2030 — Self-Assessment Tool</span>
+      <span class="pipe">|</span>
+      <span class="sub">UK Education Establishments</span>
+    </div>
+    <nav class="tabs" id="topTabs">
+      <button onclick="showScreen('home')">Home</button>
+      <button onclick="startAssessment()">Start Assessment</button>
+      <button onclick="initTrustView()">Trust View</button>
+      <a href="feedback.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><button>Feedback</button></a>
+      <button onclick="showScreen('about')">About</button>
+      <button onclick="showScreen('changelog')">Changelog</button>
+    </nav>
   </div>
-  <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
-    <button onclick="showScreen('home')" class="hdr-nav-btn">Home</button>
-    <button onclick="startAssessment()" class="hdr-nav-btn">Start Assessment</button>
-    <button onclick="initTrustView()" class="hdr-nav-btn">Trust View</button>
-    <a href="feedback.html" target="_blank" rel="noopener noreferrer" class="hdr-nav-btn">Feedback</a>
-    <button onclick="showScreen('about')" class="hdr-nav-btn">About</button>
-    <button onclick="showScreen('changelog')" class="hdr-nav-btn">Changelog</button>
-  </div>
-</div>
+</header>
 
 <!-- Old nav removed — header above handles navigation across all screens -->
 
