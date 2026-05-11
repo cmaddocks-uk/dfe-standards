@@ -1,0 +1,34 @@
+# robots.txt for cmaddocks-uk.github.io/cyber-response-cymru
+#
+# This site hosts a single static planning tool. The paths below
+# are NOT served by this site — they are listed here so that search
+# engines do not index any URL of this form, even if a third party
+# spreads or screenshots a fake URL using this domain. This is a
+# domain-abuse mitigation, not a robots-policy for the real site.
+# See SECURITY.md for the full threat model.
+
+User-agent: *
+
+# Common abuse paths — the site never serves these
+Disallow: /powerautomate/
+Disallow: /power-automate/
+Disallow: /flow/
+Disallow: /webhook/
+Disallow: /webhooks/
+Disallow: /api/
+Disallow: /invoke/
+Disallow: /trigger/
+Disallow: /callback/
+Disallow: /auth/
+Disallow: /oauth/
+Disallow: /login/
+Disallow: /signin/
+Disallow: /sso/
+Disallow: /admin/
+Disallow: /pay/
+Disallow: /payment/
+Disallow: /checkout/
+Disallow: /redirect/
+
+# Real site is wide open to crawlers — only the abuse paths are blocked.
+# Sitemap omitted (single-page app, no sitemap needed).

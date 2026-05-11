@@ -1,97 +1,79 @@
-# DfE Digital Standards 2030 — Self-Assessment Tool
+# Cyber Incident Response Planner — Wales / Cymru
 
 [![Security Policy](https://img.shields.io/badge/security-policy-green)](SECURITY.md)
+[![Version](https://img.shields.io/badge/version-0.1.0-orange)](https://cmaddocks-uk.github.io/cyber-response-cymru/#changelog)
 
-A free, browser-based self-assessment tool for schools and colleges in England working towards the **6 core DfE Digital & Technology Standards by 2030**.
+**Current version:** 0.1.0 — Welsh-context fork (Phase 1). See [in-app changelog](https://cmaddocks-uk.github.io/cyber-response-cymru/#changelog).
 
-🔗 **Live tool:** [cmaddocks-uk.github.io/dfe-standards](https://cmaddocks-uk.github.io/dfe-standards)
-💬 **Feedback:** [cmaddocks-uk.github.io/dfe-standards/feedback.html](https://cmaddocks-uk.github.io/dfe-standards/feedback.html)
+A free, single-file, browser-based planning tool for **Welsh schools**. Assesses cyber response readiness and generates a tailored **Cyber Incident Response Plan** mapped to NCSC, the Welsh Government [*Cyber Resilient Wales* strategy](https://www.gov.wales/cyber-resilient-wales-strategy), local authority cyber cover arrangements, [Estyn](https://www.estyn.gov.wales/) inspection arrangements (where cyber response intersects with safeguarding and leadership), and the [NCSC Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/cyber-assessment-framework) which Welsh Government is piloting across local authorities. Signposts the relevant ROCU Cyber PROTECT team — [TARIAN](https://www.tarianrccu.org.uk/) for South Wales, Gwent and Dyfed-Powys; [NWROCU](https://www.nwrocu.police.uk/) for North Wales.
 
----
+Wales has no DfE-Cyber-Security-Hub equivalent — sector-specific cyber response planning support for Welsh schools is a real gap. This tool exists to fill it.
 
-## What is it?
+🌐 **Live tool:** [cmaddocks-uk.github.io/cyber-response-cymru](https://cmaddocks-uk.github.io/cyber-response-cymru)
 
-The DfE Digital Standards 2030 — Self-Assessment Tool helps school IT teams assess their current position against the 6 core DfE Digital & Technology Standards. It produces a RAG-rated results report, a prioritised action plan and a governor summary report in plain English — all without any account, server or data being stored.
-
-It is designed as a **self-assessment and discussion aid** — not an authoritative compliance benchmark. Every question is based on an explicitly stated DfE requirement, and the tool is designed to complement the DfE's own [Plan Technology for Your School](https://www.gov.uk/guidance/plan-technology-for-your-school) service.
+🇬🇧 **Sister tool (England):** [cmaddocks-uk.github.io/cyber-response](https://cmaddocks-uk.github.io/cyber-response) — the original English-context version (DfE Digital Standards 2030, RPA, Ofsted, DfE Cyber Security Hub).
 
 ---
 
-## Features
+## Two-phase delivery
 
-- ✅ **28 questions** across all 6 core DfE 2030 standards
-- ✅ **RAG scoring** — Meeting Standard / Developing / Needs Attention
-- ✅ **Prioritised action plan** with suggested next steps for each gap
-- ✅ **Governor summary report** — plain English, print-ready PDF
-- ✅ **Real-world examples** under every question (e.g. Aruba Central, Cisco Meraki, Smoothwall)
-- ✅ **Standards Radar** — visual overview of all 6 standards
-- ✅ **Assessment history** — compare progress over time
-- ✅ **Trust / Multi-School View** — aggregate results across multiple schools
-- ✅ **Share Results** — copy a link that loads your results in the hosted tool
-- ✅ **GOV.UK freshness check** — automatically detects when DfE standards pages are updated
-- ✅ **No account needed** — runs entirely in the browser, data cleared on exit
+- **Phase 1 (this version, v0.1.x).** Framework swap only — UI remains in English, but every framework reference, signposted contact and assurance question is Welsh-context. A useful interim product in itself: Welsh-medium English-language schools (the majority of mainstream schools in Wales) can use it directly.
+- **Phase 2 (planned, v1.0.0).** Full Welsh-language translation by a fluent Welsh translator with sector knowledge. See [TRANSLATION.md](TRANSLATION.md) for the brief.
 
----
+The framework swap rationale and mapping is documented in [FRAMEWORK_SWAP.md](FRAMEWORK_SWAP.md).
 
-## The 6 Core Standards
+## What it does
 
-| Standard | DfE Target |
-|---|---|
-| ⚡ Broadband Internet | 2030 |
-| 🔐 Cyber Security | 2030 |
-| 🏛️ Digital Leadership & Governance | 2030 |
-| 🛡️ Filtering & Monitoring | Already required |
-| 🔌 Network Switching & Cabling | 2030 |
-| 📶 Wireless Network | 2030 |
+1. **Readiness check** — 12 RAG-scored questions on the current state of your incident response capability, mapped to NCSC and Welsh-context expectations.
+2. **Plan builder** — 11 structured sections covering school details, response team, external contacts (incl. local authority cyber lead and ROCU Cyber PROTECT), severity grading, escalation authority, playbooks, communications, **critical systems & business impact (asset register + BIA, including Hwb-hosted services)**, recovery & backups, post-incident review, and plan maintenance (with annual cyber security calendar).
+3. **Plan output** — generates a printable, governor-ready Cyber Incident Response Plan. Section 9 includes a structured asset register — particularly important for SaaS-hosted systems (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365, Google Workspace, Hwb-hosted services) where the school remains the data controller under UK GDPR.
+4. **Seven playbooks** — ransomware, personal data breach, account compromise, phishing, denial of service, insider threat, and **SaaS supplier incident** (with Wales-specific notification routes: LA cyber lead, TARIAN / NWROCU, Welsh Gov contact).
+5. **Tabletop exercises** — five anonymised scenarios that walk your plan through realistic incidents step-by-step, surfacing gaps where your plan is silent.
+6. **Governor / Trustee Report** — one-page summary using Estyn-compatible principles-based assurance language.
+7. **First 30 Minutes card** — printable, laminate-and-pin rapid-response card.
+8. **Prioritised Action Plan** — auto-generated from the readiness check.
+9. **Word / LibreOffice export** — every output exports as a `.doc` file that opens cleanly in Word / LibreOffice / Google Docs as an editable document.
+10. **JSON save & restore** — save your working data to a local JSON file at any time and re-import later.
 
----
+## Frameworks referenced
 
-## How to use it
+- [NCSC Incident Management collection](https://www.ncsc.gov.uk/collection/incident-management)
+- [NCSC Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/cyber-assessment-framework) — Welsh Government is piloting CAF across local authorities; the plan structure aligns with CAF Objectives A (asset register), C (detection) and D (minimising impact).
+- [Welsh Government — Cyber Resilient Wales strategy](https://www.gov.wales/cyber-resilient-wales-strategy)
+- [Cyber Action Plan for Wales](https://www.gov.wales/cyber-action-plan-wales-html)
+- [TARIAN ROCU](https://www.tarianrccu.org.uk/) (South Wales, Gwent, Dyfed-Powys) and [NWROCU](https://www.nwrocu.police.uk/) (North Wales) — Cyber PROTECT teams.
+- [Estyn — Inspection guidance & resources](https://www.estyn.gov.wales/inspection-guidance-resources)
+- [HWB](https://hwb.gov.wales/) — Welsh Government's digital learning platform.
+- Local authority cyber cover / insurance arrangements (varies by LA — record yours in External Contacts).
+- [Cyber Essentials](https://www.ncsc.gov.uk/cyberessentials/overview) — UK-wide NCSC scheme delivered by IASME.
 
-1. Open [cmaddocks-uk.github.io/dfe-standards](https://cmaddocks-uk.github.io/dfe-standards) in any browser
-2. Enter your school details
-3. Complete the 28-question assessment (takes around 15–20 minutes)
-4. View your RAG results, action plan and governor report
-5. Print or save as PDF to share with SLT and governors
+## Privacy
 
-No download required. No account needed. No data stored.
-
----
-
-## Automated Standards Monitoring
-
-This repo includes a GitHub Action (`check-standards.yml`) that runs daily at 8am UTC. It calls the GOV.UK Content API to check whether any of the 6 DfE standard pages have been updated. If a change is detected, it automatically creates a GitHub Issue flagging which standard has changed and linking to the updated GOV.UK page for review.
-
----
-
-## Built by
-
-Christopher Maddocks, Ex ANME Ambassador — built for the use of schools in the UK.
-
-Supported by feedback from [ANME](https://anme.co.uk) — the Association of Network Manager Educators.
-
----
+- Runs entirely in your browser. Plan data never leaves your device.
+- Data is held in the browser session only — closing the tab wipes it.
+- Save progress to a local JSON file (and re-import later) when you want to persist.
+- Anonymous page-view counts via [GoatCounter](https://www.goatcounter.com/help/gdpr) — privacy-friendly, GDPR-compliant, no cookies, no fingerprinting, no advertising trackers.
 
 ## Security
 
-The tool is hardened against common single-page-app risks: a Content Security Policy locks down all remote content (only Chart.js, GoatCounter analytics and the GOV.UK Content API are permitted — everything else is blocked), share link payloads are validated against a schema before use (preventing prototype pollution and type confusion), all user input is HTML-escaped before rendering, and all external links use `rel="noopener noreferrer"`.
+- Strict Content Security Policy (`default-src 'none'`) — only the GoatCounter analytics endpoint is permitted.
+- JSON imports validated against a strict schema.
+- All user input HTML-escaped before rendering.
+- External links use `rel="noopener noreferrer"`.
+- `frame-ancestors 'none'` and `form-action 'none'` block clickjacking and form-action hijack.
+- `robots.txt` disallows indexing of common abuse paths (`/powerautomate/`, `/api/`, `/webhook/`).
+- Custom 404 page explicitly disclaims Power Automate, webhook, payment and OAuth endpoints.
 
-See [SECURITY.md](SECURITY.md) for the full threat model and how to report issues. An automated security test suite (`security-test.js`) covers escapeHtml, share link validation, CSP and link hardening — run it with `node security-test.js`.
+See [SECURITY.md](SECURITY.md) for the full threat model.
 
----
+## Disclaimer
 
-## Feedback
+This tool is provided as-is, without warranty. It is not legal, regulatory or insurance advice. Always validate your plan with your IT support, DPO, SLT, local authority and insurer before relying on it. Not affiliated with the Welsh Government, NCSC, Estyn, TARIAN, NWROCU, HWB, ANME or any government body or insurer.
 
-Found something unclear or wrong? Have a suggestion?
+## Licence
 
-👉 [Leave feedback here](https://cmaddocks-uk.github.io/dfe-standards/feedback.html)
+MIT — see [LICENSE](LICENSE).
 
-Or raise a [GitHub Issue](https://github.com/cmaddocks-uk/dfe-standards/issues).
+## Author
 
----
-
-## DfE Standards Reference
-
-[Meeting digital and technology standards in schools and colleges](https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges)
-
-Standards last verified: **March 2026**
+Christopher Maddocks (former ANME Ambassador). Built as a contribution to the Welsh and wider UK education community. The Welsh fork is released without prior TARIAN / Welsh Government review — feedback from Welsh sector partners is welcomed and will shape v1.0.0.

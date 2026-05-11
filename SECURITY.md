@@ -1,53 +1,88 @@
 # Security Policy
 
+**Tool:** Cyber Incident Response Planner — Wales / Cymru
+**Live site:** [cmaddocks-uk.github.io/cyber-response-cymru](https://cmaddocks-uk.github.io/cyber-response-cymru)
+**Version covered:** v0.1.0 and later (Welsh fork)
+
+---
+
+## Reporting a security issue
+
+If you find a security issue with this tool, please report it via:
+
+- GitHub issue (if non-sensitive): [github.com/cmaddocks-uk/cyber-response-cymru/issues](https://github.com/cmaddocks-uk/cyber-response-cymru/issues)
+- Direct email (if sensitive): the contact listed on the [author's GitHub profile](https://github.com/cmaddocks-uk)
+
+Please **do not post exploit details publicly** before the issue is fixed. Realistic response time for a single-maintainer project is a few days, not a few hours.
+
+---
+
 ## Threat model
 
-The DfE Digital Standards 2030 — Self-Assessment Tool is a single-file static HTML application served by GitHub Pages. It has no backend, no authentication, and no shared state between users. The only remote endpoints contacted by the tool are:
+This is the Welsh-context fork of the [English Cyber Incident Response Planner](https://cmaddocks-uk.github.io/cyber-response). It shares the English tool's security posture: **a single static HTML file** hosted on GitHub Pages, with no server, no database, no user accounts, and no remote API beyond a single privacy-friendly analytics beacon. Plan data is held in the user's browser session only and never leaves their device unless they explicitly export it as a JSON file.
 
-- **GOV.UK Content API** — called on page load to check whether any DfE standard pages have been updated since the tool was last verified. No user data is sent.
-- **GoatCounter** — privacy-friendly anonymous analytics. No cookies, no fingerprinting, GDPR-compliant. Only an anonymous page-view ping is sent.
+### In scope — actively mitigated
 
-Each user's assessment data lives in their own browser's `localStorage` and is cleared when they exit the tool. No user-entered data is ever transmitted to any server.
-
-The realistic security concerns for this kind of tool are:
-
-1. **Share link injection** — the Share Results feature encodes assessment answers into a base64 URL hash. A maliciously crafted share link could attempt to inject unexpected data types, oversized payloads, or prototype pollution via the decoded JSON.
-2. **Self-XSS via rendered content** — school name, assessor name and other user-entered strings are rendered back into the DOM. If rendered via `innerHTML` without escaping, a user could inject markup that corrupts their own output.
-3. **Tabnabbing / referrer leakage** — external links to GOV.UK, ANME, NCSC etc. could leak referrer information if the destination is compromised.
-4. **Clickjacking / framing** — the tool could be embedded in a hostile iframe.
-5. **Future remote injection** — if the tool ever changed to fetch or load remote content beyond the GOV.UK API, that vector should be locked down by policy now.
-
-## Defences in place
-
-| Concern | Mitigation |
+| Threat | Mitigation |
 |---|---|
-| Share link — oversized payload | 4KB size cap on decoded share hash |
-| Share link — prototype pollution | `sanitiseSharePayload` validates structure, types and value ranges — only schema-defined keys accepted |
-| Share link — type confusion | Each field type-checked; answer values must be integers 0–3 |
-| Share link — array overflow | Max 20 standards, max 10 questions per standard enforced |
-| Share link — string overflow | All string fields capped at 200 characters |
-| Self-XSS via field rendering | `escapeHtml` escapes `& < > " ' / \` =` on all user-provided strings before DOM insertion |
-| Remote script / data injection | CSP `default-src 'none'` — only `cdnjs.cloudflare.com` (Chart.js), `gc.zgo.at` (GoatCounter) and `www.gov.uk` (freshness check) permitted |
-| Tabnabbing | All `target="_blank"` links use `rel="noopener noreferrer"` |
-| Referrer leakage | `<meta name="referrer" content="strict-origin-when-cross-origin">` |
-| Clickjacking | CSP `frame-ancestors 'none'` |
-| Base tag injection | CSP `base-uri 'none'` |
-| MIME-sniffing | `<meta http-equiv="X-Content-Type-Options" content="nosniff">` |
-| Browser API abuse | `Permissions-Policy` disables camera, microphone, geolocation, USB, payment |
+| **Cross-site scripting (XSS)** via plan content | All user input HTML-escaped before rendering. Strict Content Security Policy: `default-src 'none'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cyber-response-cymru.goatcounter.com; connect-src https://cyber-response-cymru.goatcounter.com; form-action 'none'; frame-ancestors 'none'; base-uri 'none';` |
+| **Prototype pollution / type confusion via JSON import** | All imported JSON files validated against a strict schema (`deepMergeSchema`). Unknown keys are dropped; type mismatches reject the import. Object prototypes never modified during merge. |
+| **Open redirects via external links** | Every `target="_blank"` link uses `rel="noopener noreferrer"`. |
+| **Iframe / clickjacking** | CSP `frame-ancestors 'none'` prevents the tool being embedded in an iframe on any other site. |
+| **Form-action hijacking** | CSP `form-action 'none'` blocks any form from submitting to a remote endpoint. |
+| **`<base>` tag injection** | CSP `base-uri 'none'` prevents an attacker from rebasing relative URLs. |
+| **MIME sniffing** | `X-Content-Type-Options: nosniff` (via meta tag). |
+| **Referer leakage** | `Referrer-Policy: strict-origin-when-cross-origin` (via meta tag). |
+| **Browser feature abuse** | `Permissions-Policy` denies geolocation, camera, microphone, accelerometer, gyroscope, magnetometer, payment, USB. |
+| **Domain abuse / fake URLs** (e.g. `cmaddocks-uk.github.io/cyber-response-cymru/powerautomate/...`) | See the dedicated section below. |
 
-## What is not in scope
+### Out of scope — what this tool does NOT defend against
 
-- **Confidentiality of localStorage data.** Assessment data stored in `localStorage` is accessible to any script running on the same origin. The tool clears this data on exit.
-- **Print output redaction.** Governor reports and action plans contain everything entered. Treat printed copies as potentially sensitive documents.
-- **Browser compromise.** If the user's browser is compromised, the tool cannot defend against that.
-- **Phishing of the URL.** Always verify you are on `cmaddocks-uk.github.io/dfe-standards`. There is no other authoritative URL.
+- **Compromise of the user's own browser or device.** If the user's machine is infected, all bets are off.
+- **Loss / theft of the user's exported plan JSON file.** Plans are saved as plain JSON to the user's filesystem. Treat saved plans as you would any sensitive school document — they may contain staff phone numbers and supplier contacts.
+- **Phishing emails referring to the tool.** A phishing email could plausibly link to the real tool — that's not something this site can prevent. The tool itself only loads from `cmaddocks-uk.github.io/cyber-response-cymru`; verify the URL.
+- **Malicious browser extensions.** A malicious extension can read or modify plan data in the browser. The tool cannot defend against this.
 
-## Reporting a vulnerability
+---
 
-If you find a security issue, please open a [GitHub Issue](https://github.com/cmaddocks-uk/dfe-standards/issues) marked clearly as a security concern. For sensitive issues that should not be public, contact via the email on the GitHub profile and the issue can be coordinated privately.
+## Domain abuse — fake URLs using `cmaddocks-uk.github.io`
 
-## Verifying the deployed file
+GitHub Pages serves any path under the site's base URL, falling through to the configured 404 page if no file matches. This means a third party could spread a fake URL like:
 
-This is a single-file application. The version number is shown in the changelog screen within the tool. Anyone can review the source by viewing the page source in a browser, or by checking the [GitHub repository](https://github.com/cmaddocks-uk/dfe-standards).
+```
+cmaddocks-uk.github.io/cyber-response-cymru/powerautomate/your-flow-here
+cmaddocks-uk.github.io/cyber-response-cymru/api/auth/microsoft
+cmaddocks-uk.github.io/cyber-response-cymru/webhook/triggers/...
+```
 
-There are no minifiers or build steps — what is in the repo is what is served.
+…and anyone clicking it would arrive at this domain. The site never hosts these endpoints. The tool is not a webhook, API server, OAuth provider, or integration target. It is a **static HTML file** for cyber response planning.
+
+### What this site does to mitigate domain abuse
+
+1. **Custom 404 page** ([`404.html`](404.html)) explicitly disclaims Power Automate / webhook / payment / OAuth endpoints by name. Anyone arriving at a fake URL sees a clear "this site does not host that" message.
+2. **`robots.txt`** disallows search-engine indexing of common abuse path patterns (`/powerautomate/`, `/api/`, `/webhook/`, `/auth/`, `/payment/`, etc.) so those URLs don't get indexed and amplified by search results.
+3. **No client-side routing.** The tool is a single `index.html`. Unknown paths are served the 404, not silently rewritten to the SPA.
+4. **`frame-ancestors 'none'`** prevents the tool being framed inside another site to lend credibility to a fake URL.
+
+### What to do if you receive a suspicious URL using this domain
+
+1. **Do not click it.** The real tool is at `cmaddocks-uk.github.io/cyber-response-cymru` with **no further path components**.
+2. Forward the email to [Report Suspicious Email](https://www.ncsc.gov.uk/collection/phishing-scams/report-suspicious-emails) (`report@phishing.gov.uk`) so NCSC can act on it.
+3. Report to [Report Fraud](https://www.reportfraud.police.uk/) (`0300 123 2040`) if money or data has been lost.
+4. Welsh schools can also notify their regional ROCU Cyber PROTECT team — TARIAN (South Wales / Gwent / Dyfed-Powys) or NWROCU (North Wales).
+5. Notify the author via the issue route above so the 404 page and robots.txt can be hardened against the specific path being abused.
+
+---
+
+## Privacy
+
+- No cookies. No fingerprinting. No advertising trackers.
+- One external connection: anonymous page-view counts via [GoatCounter](https://www.goatcounter.com/help/gdpr) (privacy-friendly, GDPR-compliant). Whitelisted in CSP.
+- Plan data lives in browser sessionStorage only — never sent to any server.
+- JSON exports go directly to the user's filesystem via the browser's download mechanism.
+
+---
+
+## Last reviewed
+
+This document is reviewed at each minor version bump. Last reviewed: **v0.1.0 (10 May 2026).**
