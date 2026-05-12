@@ -39,9 +39,19 @@ function sanitiseSharePayload(payload) {
       if(typeof val !== 'number' || val < 0 || val > 3) return null;
     }
   }
+  // Validate sc (per-standard 0–100 percentages). Used by the Trust view.
+  let sc = null;
+  if(Array.isArray(payload.sc) && payload.sc.length <= 20) {
+    sc = [];
+    for(const val of payload.sc) {
+      if(typeof val !== 'number' || val < 0 || val > 100) return null;
+      sc.push(Math.round(val));
+    }
+  }
   return {
     v: 1,
     ans: payload.ans,
+    sc: sc,
     d: typeof payload.d === 'string' ? payload.d.slice(0, 30) : '',
     s: typeof payload.s === 'string' ? payload.s.slice(0, 200) : '',
     ph: typeof payload.ph === 'string' ? payload.ph.slice(0, 50) : '',
@@ -1026,6 +1036,7 @@ function loadTrustFromUrl(){
     const payload=sanitiseSharePayload(raw);
     if(!payload) throw new Error('Invalid share payload');
     if(payload.v!==1) throw new Error("invalid");
+    if(!payload.sc) throw new Error('Share is missing per-standard scores');
     trustData[activeTrustIdx].schools.push({name:payload.s,phase:payload.ph||"",scores:payload.sc});
     document.getElementById("trustShareUrl").value="";
     if(errEl) errEl.style.display="none";
