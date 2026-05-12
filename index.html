@@ -535,8 +535,32 @@
 
       <div class="card" style="border-left:4px solid var(--teal)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px">
-          <h3 style="font-size:15px">Version 3.4 — 23 April 2026</h3>
+          <h3 style="font-size:15px">Version 3.6 — 12 May 2026</h3>
           <span style="padding:3px 10px;background:var(--teal-light);color:var(--teal);border-radius:20px;font-size:11px;font-weight:700;border:1px solid #99f6e4">Latest</span>
+        </div>
+        <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
+          <li><strong style="color:var(--text)">Trust view: fix all share URLs being rejected</strong> — every shared results URL pasted into the Trust / Multi-School view was failing with "Could not read that URL — make sure it's a valid shared results link." Reported by a user. The share-link sanitiser added for security validation was stripping the per-standard scores field that the Trust view needed, causing the dashboard to crash silently and surface a misleading error. Sanitiser now preserves validated scores. Affected every share link pasted into the Trust view.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-left:4px solid #0891b2">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+          <h3 style="font-size:15px">Version 3.5 — 11 May 2026</h3>
+        </div>
+        <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
+          <li><strong style="color:var(--text)">"Save your PDF" warning now actually appears</strong> — the browser warning shown when closing the tab mid-assessment (or with unsaved results on screen) was silently broken — it was checking <code>window.screen</code> rather than the current screen state, so it never fired. Users could lose 15–20 minutes of work with no prompt. Now correctly triggers.</li>
+          <li><strong style="color:var(--text)">Copy for Email button on the Governor Report</strong> — the function existed but no button on the screen actually called it. Wired up alongside Print / Save PDF; copies the full plain-text governor summary to clipboard for pasting into Outlook / Gmail.</li>
+          <li><strong style="color:var(--text)">GOV.UK freshness check — more honest reporting</strong> — per-standard verified dates (rather than one global date), validation that the GOV.UK API response actually contains a timestamp (defends against silent failures if the API schema changes), and an honest "5 of 6 current" amber state when some standards couldn't be checked (used to falsely say "All current" while ignoring the errors).</li>
+          <li><strong style="color:var(--text)">Home page UX cleanup</strong> — freshness status now visually separate from the navigation chips (was being mistaken for a clickable link), the long "About this check" explainer is collapsible, removed the duplicate Feedback link from the chip row, "Get started" copy now leads with what you'll <em>have</em> (RAG scores, action plan, governor report) rather than just process.</li>
+          <li><strong style="color:var(--text)">Feedback links now route to a Google Form</strong> — all eight feedback links across the tool now open <a href="https://forms.gle/oCvCJxcESyYA24Ho9" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">forms.gle/oCvCJxcESyYA24Ho9</a> in a new tab. Previously pointed at a feedback.html that wasn't reliably available.</li>
+          <li><strong style="color:var(--text)">Maintainability: tool split into separate files</strong> — the single 3000-line HTML file has been split into <code>index.html</code> (markup), <code>styles.css</code>, <code>standards-data.js</code> (questions and benchmarks), <code>freshness.js</code> (GOV.UK check) and <code>app.js</code>. No user-visible change but every future edit will be smaller and less risky.</li>
+          <li><strong style="color:var(--text)">Dead code removed</strong> — orphaned compare-screen markup, a duplicate "About this check" paragraph, the IT Support code leftover from v2.3, and a broken CSS rule (<code>details{open:true}</code>) that wasn't valid CSS.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-left:4px solid #0891b2">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+          <h3 style="font-size:15px">Version 3.4 — 23 April 2026</h3>
         </div>
         <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
           <li><strong style="color:var(--text)">All 28 questions — progression-based answer options</strong> — following community feedback, all answer options have been rewritten as clear progression descriptors rather than technology checklists. Each option now describes where a school currently sits on a journey from Not in place → Developing → Mostly in place → Fully meeting standard. Content unchanged — same DfE requirements, clearer framing.</li>
