@@ -192,6 +192,7 @@ function renderHome(){
     document.getElementById("latestTag").innerHTML=`<span class="dot dot-${latest.rag}"></span>${RAG_LABEL[latest.rag]}`;
     document.getElementById("latestPct").textContent=Math.round(latest.pct*100)+"%";
     document.getElementById("latestPct").style.color=RAG_COLOR[latest.rag];
+    (function(){var ring=document.querySelector("#latestRing .prog");if(ring){var lp=Math.round(latest.pct*100);ring.style.stroke=RAG_COLOR[latest.rag];ring.style.strokeDashoffset=(2*Math.PI*86*(1-lp/100)).toFixed(2);}})();
     document.getElementById("latestPoints").textContent=`${latest.total}/${TOTAL_MAX_DFE} pts DfE`;
     document.getElementById("latestBars").innerHTML=latest.scores.map(sc=>
       `<div class="score-row">
@@ -708,8 +709,14 @@ function renderGovernorReport() {
           <p style="font-size:12px;color:rgba(255,255,255,.55)">${fmtDate(r.date)}${r.assessor?` &nbsp;·&nbsp; Completed by ${r.assessor}`:""}${r.jobTitle?`, ${r.jobTitle}`:""}</p>
         </div>
         <div style="text-align:right;flex-shrink:0">
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:4px">Overall Score</div>
-          <div style="font-size:58px;font-weight:800;color:${verdictColor};line-height:1">${overallPct}%</div>
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:8px">Overall Score</div>
+          <div style="position:relative;width:104px;height:104px;display:inline-block">
+            <svg width="104" height="104" viewBox="0 0 200 200" aria-hidden="true">
+              <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="16"></circle>
+              <circle cx="100" cy="100" r="86" fill="none" stroke="${verdictColor}" stroke-width="16" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="${(2*Math.PI*86*(1-overallPct/100)).toFixed(2)}" transform="rotate(-90 100 100)"></circle>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:30px;font-weight:800;color:${verdictColor};line-height:1">${overallPct}%</div>
+          </div>
           <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-top:5px">${RAG_LABEL[r.rag]}</div>
           <div style="display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:11px;color:rgba(255,255,255,.7);margin-top:8px">${meeting} of 6 core standards met</div>
           ${r.pracPct!==undefined?`<div style="margin-top:8px;background:#fffbeb;border-radius:10px;padding:6px 12px;display:inline-block">

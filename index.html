@@ -213,8 +213,14 @@
             </div>
             <span id="latestTag" class="tag"></span>
           </div>
-          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-            <div id="latestPct" style="font-size:36px;font-weight:800;line-height:1"></div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap">
+            <div id="latestRing" style="position:relative;width:72px;height:72px;flex-shrink:0">
+              <svg width="72" height="72" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="86" fill="none" stroke="#f1f5f9" stroke-width="18"></circle>
+                <circle class="prog" cx="100" cy="100" r="86" fill="none" stroke="#ccc" stroke-width="18" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="540.35" transform="rotate(-90 100 100)"></circle>
+              </svg>
+              <div id="latestPct" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:19px;font-weight:800;line-height:1"></div>
+            </div>
             <p class="muted" id="latestPoints" style="font-size:12px"></p>
           </div>
           <div id="latestBars"></div>
