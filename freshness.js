@@ -9,9 +9,9 @@
 // re-reviewed against the current GOV.UK guidance page — don't blanket-bump.
 const VERIFIED_DATES = {
   broadband:  "2026-04-23",
-  cyber:      "2026-04-23",
+  cyber:      "2026-06-29",
   leadership: "2026-04-23",
-  filtering:  "2026-04-23",
+  filtering:  "2026-06-29",
   switching:  "2026-04-23",
   wireless:   "2026-04-23"
 };
