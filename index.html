@@ -49,124 +49,90 @@
 <!-- ══════════════════════════════════════ HOME ══ -->
 <div id="screen-home" class="screen">
   <main>
-    <div id="schoolSetup" style="max-width:1600px;margin:0 auto;padding:0 0 8px">
+    <div id="schoolSetup">
+      <div class="dfe-landing">
 
-      <!-- Full-width title header -->
-      <div style="text-align:center;padding:24px 0 20px">
-        <div style="margin-bottom:12px"><svg width="48" height="48" viewBox="0 0 36 36" aria-hidden="true" style="display:inline-block"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#0d9488" stroke-width="3" stroke-dasharray="20.4 4"/><circle cx="18" cy="18" r="11.5" fill="#0d9488"/></svg></div>
-        <h1 style="font-size:38px;font-weight:800;color:var(--navy);letter-spacing:-.03em;margin-bottom:10px;line-height:1.2">DfE Digital Standards 2030 — Self-Assessment Tool</h1>
-        <p style="font-size:18px;color:var(--muted);line-height:1.6;max-width:720px;margin:0 auto">
-          A free self-assessment tool for schools working towards the <strong style="color:var(--navy)">6 core DfE Digital &amp; Technology Standards by 2030</strong>.
-        </p>
-      </div>
+        <!-- Laptop notice (JS toggles #mobileBanner on small screens) -->
+        <div id="mobileBanner" class="banner laptop" style="display:none;margin-bottom:22px">💻 <strong>Best on a laptop or desktop.</strong> You can browse on mobile, but the assessment and governor report read better on a larger screen.</div>
 
-      <!-- Mobile warning banner -->
-      <div id="mobileBanner" style="display:none;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 16px;margin-bottom:16px;text-align:center">
-        <p style="font-size:13px;color:#92400e;line-height:1.5">📱 <strong>Best viewed on a laptop or desktop.</strong> You can browse on mobile, but we recommend completing the full assessment on a larger screen for the best experience.</p>
-      </div>
-
-      <!-- Two-column layout: left = why + links, right = CTA -->
-      <div class="two-col-landing" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;padding-bottom:24px">
-
-        <!-- LEFT: card matching right column -->
-        <div style="background:#fff;border-radius:18px;border:1px solid var(--border);border-top:6px solid var(--navy);padding:32px;box-shadow:0 6px 32px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:20px;height:100%">
-
-          <!-- Feature badges -->
-          <div style="display:flex;flex-wrap:wrap;gap:8px">
-            <span style="padding:6px 16px;background:#f0fdfa;color:#0f766e;border-radius:20px;font-size:14px;font-weight:600;border:1px solid #99f6e4">✓ Free to use</span>
-            <span style="padding:6px 16px;background:#f0fdfa;color:#0f766e;border-radius:20px;font-size:14px;font-weight:600;border:1px solid #99f6e4">✓ No account needed</span>
-            <span style="padding:6px 16px;background:#f0fdfa;color:#0f766e;border-radius:20px;font-size:14px;font-weight:600;border:1px solid #99f6e4">✓ Data cleared on exit</span>
-            <span style="padding:6px 16px;background:#f0fdfa;color:#0f766e;border-radius:20px;font-size:14px;font-weight:600;border:1px solid #99f6e4">✓ Print reports for governors</span>
-          </div>
-
-          <!-- Why box -->
-          <div style="background:#f8fafc;border-radius:12px;border:1px solid var(--border);padding:20px 22px;flex:1">
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <span style="font-size:26px;flex-shrink:0">💡</span>
-              <div>
-                <p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px">A self-assessment and discussion tool for schools</p>
-                <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:10px">Designed to complement the DfE's own <em>Plan Technology for Your School</em> service — not replace it. Questions are labelled <strong style="color:#15803d">explicitly linked to the DfE standards — so schools always know exactly what's being assessed. Produces RAG scores, an action plan and a governor report to support discussion with SLT.</p>
-                <p style="font-size:14px;color:var(--muted);line-height:1.6"><strong style="color:var(--navy)">No data stored — cleared on exit.</strong> Use alongside the DfE's own tools.</p>
-              </div>
+        <!-- HERO -->
+        <div class="hero">
+          <div>
+            <div class="hero-brand">
+              <svg width="52" height="52" viewBox="0 0 36 36" aria-hidden="true" style="color:var(--teal)"><circle cx="18" cy="18" r="15.5" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="20.4 4"/><circle cx="18" cy="18" r="11.5" fill="currentColor"/></svg>
+              <span class="eyebrow">Self-assessment · 6 core standards by 2030</span>
+            </div>
+            <h1>Are you ready for the DfE Digital Standards?</h1>
+            <p class="tag">A free self-assessment tool for schools working towards the <strong>6 core DfE Digital &amp; Technology Standards by 2030</strong>.</p>
+            <div class="trust">
+              <span class="pill accent">✓ Free to use</span>
+              <span class="pill accent">✓ No account needed</span>
+              <span class="pill accent">✓ Data cleared on exit</span>
+              <span class="pill accent">✓ Print reports for governors</span>
+            </div>
+            <div class="govbadge">
+              <span style="font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-size:11px">GOV.UK check:</span>
+              <span id="freshnessBadge" style="padding:4px 12px;background:#f8fafc;color:var(--muted);border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--border)" title="Checking GOV.UK for standard updates...">🔄 Checking standards…</span>
+              <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer">DfE Standards ↗</a>
+            </div>
+            <div class="cta-row">
+              <button class="btn btn-primary" onclick="goToSchoolDetails()">Start the assessment <span aria-hidden="true">→</span></button>
+              <button class="btn btn-secondary" onclick="initTrustView()">🏫 Trust / Multi-School View</button>
             </div>
           </div>
 
-          <!-- Status + navigation chips on one row -->
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">
-            <span style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">GOV.UK check:</span>
-            <span id="freshnessBadge" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:default" title="Checking GOV.UK for standard updates...">🔄 Checking standards…</span>
-            <span style="width:1px;height:18px;background:var(--border);margin:0 2px"></span>
-            <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer" style="padding:5px 14px;background:#f8fafc;color:var(--teal);border-radius:20px;font-size:12px;border:1px solid var(--border);text-decoration:none">📖 DfE Standards ↗</a>
-            <button onclick="showScreen('about')" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:pointer;font-family:inherit">ℹ️ About</button>
-            <button onclick="showScreen('changelog')" style="padding:5px 14px;background:#f8fafc;color:var(--muted);border-radius:20px;font-size:12px;border:1px solid var(--border);cursor:pointer;font-family:inherit">📝 Changelog</button>
-          </div>
-
-          <!-- Collapsible freshness explainer -->
-          <details style="background:#f8fafc;border:1px solid var(--border);border-radius:8px">
-            <summary style="cursor:pointer;padding:10px 14px;font-size:12px;color:var(--text);font-weight:600;user-select:none;list-style:none">ℹ️ How does the GOV.UK standards check work?</summary>
-            <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0;padding:0 14px 12px">
-              This tool connects to the GOV.UK Content API to detect when a standard's guidance page was last updated. It can tell you that a change has occurred — but it <strong>cannot automatically update the assessment questions</strong>. Questions, scoring and actions are maintained manually and reviewed by the ANME community. If an update is flagged, check the relevant GOV.UK page and <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer" style="color:var(--teal);text-decoration:none">contact ANME ↗</a> if you believe the questions need revising.
-            </p>
-          </details>
-
-          <!-- Freshness panel — shown only when updates detected -->
-          <div id="freshnessPanel" style="display:none;background:#fffbeb;border-radius:12px;border:1px solid var(--amber-border);padding:18px 20px">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-              <span id="freshnessPanelIcon" style="font-size:20px">⚠️</span>
-              <div style="font-size:14px;font-weight:700;color:var(--navy)" id="freshnessPanelTitle">Standard updates detected on GOV.UK</div>
+          <!-- SIDE -->
+          <div class="side">
+            <div class="card">
+              <span class="eyebrow">Companion tool</span>
+              <a class="companion" href="https://cmaddocks-uk.github.io/cyber-response/" target="_blank" rel="noopener noreferrer">
+                <span class="ico">🛡️</span>
+                <span class="ct">
+                  <b>Cyber Incident Response Planner</b>
+                  <small>Build a tailored Cyber Incident Response Plan mapped to NCSC, DfE Digital Standards 2030, RPA and Ofsted guidance.</small>
+                </span>
+                <span class="arrow">→</span>
+              </a>
             </div>
-            <div id="freshnessStdList" style="display:flex;flex-direction:column;gap:8px"></div>
-          </div>
 
+            <details class="card side-card">
+              <summary>ℹ️ How does the GOV.UK standards check work?</summary>
+              <p>This tool connects to the GOV.UK Content API to detect when a standard's guidance page was last updated. It can tell you a change has occurred — but it <strong>cannot automatically update the assessment questions</strong>. Questions, scoring and actions are maintained manually and reviewed by the ANME community. If an update is flagged, check the relevant GOV.UK page and <a href="https://anme.co.uk" target="_blank" rel="noopener noreferrer">contact ANME ↗</a> if you believe the questions need revising.</p>
+            </details>
+
+            <!-- Freshness panel — shown only when updates detected -->
+            <div id="freshnessPanel" class="freshness-panel" style="display:none">
+              <div class="fp-head"><span id="freshnessPanelIcon">⚠️</span><div id="freshnessPanelTitle">Standard updates detected on GOV.UK</div></div>
+              <div id="freshnessStdList"></div>
+            </div>
+          </div>
         </div>
 
-        <!-- RIGHT: CTA card + feedback -->
-        <div style="display:flex;flex-direction:column;gap:20px">
-        <div style="background:#fff;border-radius:18px;border:1px solid var(--border);border-top:6px solid var(--teal);padding:32px;box-shadow:0 6px 32px rgba(0,0,0,.08)">
-          <h2 style="font-size:24px;font-weight:700;color:var(--navy);margin-bottom:6px">Get started</h2>
-          <p class="muted" style="margin-bottom:24px;font-size:15px">Get RAG-rated scores, a prioritised action plan and a printable governor report — in 15–20 minutes.</p>
+        <!-- Callout -->
+        <div class="callout">
+          <p>A self-assessment and discussion tool for schools — designed to <strong>complement</strong> the DfE's own <em>'Plan Technology for Your School'</em> service, not replace it. Questions are explicitly linked to the DfE standards, so you always know what's being assessed. Produces RAG scores, an action plan and a governor report. <strong>No data stored — cleared on exit.</strong></p>
+        </div>
 
-          <button class="btn" onclick="goToSchoolDetails()" style="width:100%;padding:18px 20px;font-size:20px;justify-content:center;margin-bottom:14px;box-shadow:0 4px 16px rgba(13,148,136,.3);border-radius:12px">
-            ▶ Start Assessment
-          </button>
-          <button class="btn-ghost" onclick="initTrustView()" style="width:100%;padding:13px 20px;font-size:15px;justify-content:center;border-radius:10px">
-            🏫 Trust / Multi-School View
-          </button>
+        <!-- Six standards -->
+        <div class="sectionhead"><h2>The six standards</h2><span class="eyebrow">Start the assessment to RAG-rate each one</span></div>
+        <div class="grid6">
+          <div class="scard" onclick="goToSchoolDetails()"><span class="eyebrow">Standard 1 · Broadband</span><h3>Broadband Internet</h3><p>Full fibre broadband with resilience, appropriate speeds and safeguarding systems in place.</p><div class="sfoot"><span class="pill todo"><span class="dot" style="background:var(--muted)"></span>Not yet assessed</span><span class="arrow">Start →</span></div></div>
+          <div class="scard" onclick="goToSchoolDetails()"><span class="eyebrow">Standard 2 · Wireless</span><h3>Wireless Network</h3><p>Reliable, centrally managed Wi-Fi coverage across all teaching and learning spaces.</p><div class="sfoot"><span class="pill todo"><span class="dot" style="background:var(--muted)"></span>Not yet assessed</span><span class="arrow">Start →</span></div></div>
+          <div class="scard" onclick="goToSchoolDetails()"><span class="eyebrow">Standard 3 · Network</span><h3>Network Switching &amp; Cabling</h3><p>Fast, reliable and secure network switches with central management, security features and resilient power.</p><div class="sfoot"><span class="pill todo"><span class="dot" style="background:var(--muted)"></span>Not yet assessed</span><span class="arrow">Start →</span></div></div>
+          <div class="scard" onclick="goToSchoolDetails()"><span class="eyebrow">Standard 4 · Cyber Security</span><h3>Cyber Security</h3><p>Keep your school or college cyber secure and control and secure user accounts.</p><div class="sfoot"><span class="pill todo"><span class="dot" style="background:var(--muted)"></span>Not yet assessed</span><span class="arrow">Start →</span></div></div>
+          <div class="scard" onclick="goToSchoolDetails()"><span class="eyebrow">Standard 5 · Filtering</span><h3>Filtering &amp; Monitoring</h3><p>Provide a safe online environment with appropriate filtering and monitoring. Schools should already be meeting this standard now.</p><div class="sfoot"><span class="pill todo"><span class="dot" style="background:var(--muted)"></span>Not yet assessed</span><span class="arrow">Start →</span></div></div>
+          <div class="scard" onclick="goToSchoolDetails()"><span class="eyebrow">Standard 6 · Leadership</span><h3>Digital Leadership &amp; Governance</h3><p>Effective digital technology leadership, governance, roles, responsibilities and processes.</p><div class="sfoot"><span class="pill todo"><span class="dot" style="background:var(--muted)"></span>Not yet assessed</span><span class="arrow">Start →</span></div></div>
+        </div>
 
-          <!-- Standards mini-grid -->
-          <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px">
-            <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">6 Core 2030 Standards</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="homePills2"></div>
-          </div>
-
-          <!-- Companion tool card -->
-          <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:20px">
-            <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">Companion Tool</p>
-            <a href="https://cmaddocks-uk.github.io/cyber-response/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--teal-light);border:1px solid #99f6e4;border-radius:10px;text-decoration:none;transition:all .15s" onmouseover="this.style.background='#ccfbf1';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='var(--teal-light)';this.style.borderColor='#99f6e4'">
-              <div style="font-size:28px;flex-shrink:0">🛡️</div>
-              <div style="flex:1;min-width:0">
-                <p style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px">Cyber Incident Response Planner</p>
-                <p style="font-size:12px;color:var(--muted);line-height:1.5">Build a tailored Cyber Incident Response Plan mapped to NCSC, DfE Digital Standards 2030, RPA and Ofsted guidance.</p>
-              </div>
-              <span style="color:var(--teal);font-size:18px;flex-shrink:0">→</span>
-            </a>
-          </div>
-        </div><!-- end Get Started card -->
-
-        <!-- Feedback banner — sits below Get Started in right column -->
-        <div style="background:#f0fdfa;border:2px solid var(--teal);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px">
-          <div>
-            <p style="font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px">💬 Help us improve this tool</p>
-            <p style="font-size:13px;color:var(--muted);line-height:1.6">Tried the tool? We'd love to know what you think. Your feedback shapes future versions and helps the school IT community get the most from it.</p>
-          </div>
-          <a href="https://forms.gle/oCvCJxcESyYA24Ho9" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;background:var(--teal);color:#fff;border-radius:10px;text-decoration:none;font-size:15px;font-weight:700" onmouseover="this.style.background='#0f766e'" onmouseout="this.style.background='var(--teal)'">
-            💬 Share Your Feedback
-          </a>
-        </div><!-- end feedback banner -->
-        </div><!-- end right flex column -->
+        <!-- Feedback -->
+        <div class="feedback">
+          <div><b>💬 Help us improve this tool</b><p>Tried the tool? We'd love to know what you think. Your feedback shapes future versions and helps the school IT community get the most from it.</p></div>
+          <a href="https://forms.gle/oCvCJxcESyYA24Ho9" target="_blank" rel="noopener noreferrer">💬 Share Your Feedback</a>
+        </div>
 
       </div>
     </div>
+
 
     <!-- Post-school home (shown after school saved) -->
     <div id="homeMain" class="hidden">

@@ -239,3 +239,63 @@
     *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
   }
   @media screen{.print-only{display:none!important}}
+
+  /* ── Home landing (from the Claude Design "Home" comp) — scoped to .dfe-landing ── */
+  .dfe-landing{max-width:1180px;margin:0 auto}
+  .dfe-landing .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+  .dfe-landing .banner{border-radius:10px;padding:13px 16px;font-size:13.5px;display:flex;align-items:center;gap:10px}
+  .dfe-landing .banner.laptop{background:var(--teal-light);border:1px solid #99f6e4;color:#0f766e}
+  .dfe-landing .hero{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start}
+  .dfe-landing .hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:4px}
+  .dfe-landing .hero h1{font-size:40px;font-weight:800;letter-spacing:-.03em;margin:8px 0 0;color:var(--navy);line-height:1.12}
+  .dfe-landing .hero .tag{font-size:17px;color:var(--muted);max-width:54ch;margin:12px 0 0;line-height:1.6}
+  .dfe-landing .hero .tag strong{color:var(--navy)}
+  .dfe-landing .trust{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+  .dfe-landing .pill{font-size:12.5px;font-weight:600;padding:4px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+  .dfe-landing .pill .dot{width:7px;height:7px;border-radius:50%}
+  .dfe-landing .pill.accent{background:var(--teal-light);color:#0f766e;border:1px solid #99f6e4}
+  .dfe-landing .pill.todo{background:#f8fafc;color:var(--muted);border:1px solid var(--border)}
+  .dfe-landing .govbadge{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12.5px;color:var(--muted);margin-top:18px}
+  .dfe-landing .govbadge a{color:var(--teal);text-decoration:none;font-weight:600}
+  .dfe-landing .cta-row{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+  .dfe-landing .btn{font-family:inherit;font-weight:600;font-size:15px;border-radius:8px;padding:12px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;line-height:1;text-decoration:none;border:1px solid transparent;color:#fff}
+  .dfe-landing .btn-primary{background:var(--teal);border-color:var(--teal)}
+  .dfe-landing .btn-primary:hover{background:#0c8479}
+  .dfe-landing .btn-secondary{background:#fff;color:var(--navy);border-color:var(--border)}
+  .dfe-landing .btn-secondary:hover{border-color:var(--teal);color:#0f766e}
+  .dfe-landing .side{display:flex;flex-direction:column;gap:16px}
+  .dfe-landing .card{background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 1px 2px rgba(15,23,42,.04),0 4px 12px rgba(15,23,42,.06);padding:20px}
+  .dfe-landing .companion{display:flex;align-items:center;gap:12px;text-decoration:none;margin-top:12px;padding:12px;background:var(--teal-light);border:1px solid #99f6e4;border-radius:10px}
+  .dfe-landing .companion .ico{font-size:24px;flex-shrink:0}
+  .dfe-landing .companion .ct{flex:1;min-width:0}
+  .dfe-landing .companion .ct b{display:block;font-size:14px;color:var(--navy);font-family:'Hanken Grotesk',system-ui,sans-serif}
+  .dfe-landing .companion .ct small{display:block;font-size:12px;color:var(--muted);line-height:1.5;margin-top:2px}
+  .dfe-landing .companion .arrow{color:var(--teal);font-size:18px;flex-shrink:0}
+  .dfe-landing details.side-card{padding:0}
+  .dfe-landing details.side-card summary{cursor:pointer;padding:14px 16px;font-size:12.5px;font-weight:600;color:var(--text);list-style:none}
+  .dfe-landing details.side-card summary::-webkit-details-marker{display:none}
+  .dfe-landing details.side-card p{font-size:12px;color:var(--muted);line-height:1.6;margin:0;padding:0 16px 14px}
+  .dfe-landing details.side-card a{color:var(--teal);text-decoration:none}
+  .dfe-landing .freshness-panel{background:var(--amber-bg);border:1px solid var(--amber-border);border-radius:10px;padding:16px}
+  .dfe-landing .freshness-panel .fp-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px;font-weight:700;color:var(--navy)}
+  .dfe-landing #freshnessStdList{display:flex;flex-direction:column;gap:8px}
+  .dfe-landing .callout{background:#f8fafc;border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:10px;padding:18px 20px;margin-top:28px}
+  .dfe-landing .callout p{margin:0;font-size:14px;color:var(--muted);line-height:1.7}
+  .dfe-landing .callout strong{color:var(--navy)}
+  .dfe-landing .sectionhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:38px 0 0;flex-wrap:wrap}
+  .dfe-landing .sectionhead h2{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+  .dfe-landing .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
+  .dfe-landing .scard{background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 1px 2px rgba(15,23,42,.04),0 4px 12px rgba(15,23,42,.06);padding:20px;display:flex;flex-direction:column;gap:7px;cursor:pointer;transition:border-color .15s}
+  .dfe-landing .scard:hover{border-color:var(--teal)}
+  .dfe-landing .scard h3{font-size:17px;color:var(--navy)}
+  .dfe-landing .scard p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.55}
+  .dfe-landing .scard .sfoot{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between}
+  .dfe-landing .scard .arrow{color:var(--teal);font-weight:600;font-size:13px}
+  .dfe-landing .feedback{margin-top:28px;background:var(--teal-light);border:2px solid var(--teal);border-radius:14px;padding:22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .dfe-landing .feedback b{font-size:17px;color:var(--navy);font-family:'Hanken Grotesk',system-ui,sans-serif}
+  .dfe-landing .feedback p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.6;max-width:60ch}
+  .dfe-landing .feedback a{margin-left:auto;padding:13px 20px;background:var(--teal);color:#fff;border-radius:10px;text-decoration:none;font-size:15px;font-weight:700;white-space:nowrap}
+  .dfe-landing .feedback a:hover{background:#0f766e}
+  @media(max-width:900px){.dfe-landing .grid6{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:860px){.dfe-landing .hero{grid-template-columns:1fr}}
+  @media(max-width:640px){.dfe-landing .grid6{grid-template-columns:1fr}.dfe-landing .hero h1{font-size:30px}.dfe-landing .feedback a{margin-left:0}}
