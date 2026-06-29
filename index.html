@@ -28,7 +28,7 @@
 <header class="topbar">
   <div class="container topbar-inner">
     <div class="brand">
-      <span class="logo">📋</span>
+      <svg class="brand-mark" width="22" height="22" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#0d9488" stroke-width="3" stroke-dasharray="20.4 4"/><circle cx="18" cy="18" r="11.5" fill="#0d9488"/></svg>
       <span>DfE Digital Standards 2030 — Self-Assessment Tool</span>
       <span class="pipe">|</span>
       <span class="sub">UK Education Establishments</span>
@@ -53,7 +53,7 @@
 
       <!-- Full-width title header -->
       <div style="text-align:center;padding:24px 0 20px">
-        <div style="font-size:44px;margin-bottom:10px">📋</div>
+        <div style="margin-bottom:12px"><svg width="48" height="48" viewBox="0 0 36 36" aria-hidden="true" style="display:inline-block"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#0d9488" stroke-width="3" stroke-dasharray="20.4 4"/><circle cx="18" cy="18" r="11.5" fill="#0d9488"/></svg></div>
         <h1 style="font-size:38px;font-weight:800;color:var(--navy);letter-spacing:-.03em;margin-bottom:10px;line-height:1.2">DfE Digital Standards 2030 — Self-Assessment Tool</h1>
         <p style="font-size:18px;color:var(--muted);line-height:1.6;max-width:720px;margin:0 auto">
           A free self-assessment tool for schools working towards the <strong style="color:var(--navy)">6 core DfE Digital &amp; Technology Standards by 2030</strong>.
@@ -213,8 +213,14 @@
             </div>
             <span id="latestTag" class="tag"></span>
           </div>
-          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-            <div id="latestPct" style="font-size:36px;font-weight:800;line-height:1"></div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap">
+            <div id="latestRing" style="position:relative;width:72px;height:72px;flex-shrink:0">
+              <svg width="72" height="72" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="86" fill="none" stroke="#f1f5f9" stroke-width="18"></circle>
+                <circle class="prog" cx="100" cy="100" r="86" fill="none" stroke="#ccc" stroke-width="18" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="540.35" transform="rotate(-90 100 100)"></circle>
+              </svg>
+              <div id="latestPct" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:19px;font-weight:800;line-height:1"></div>
+            </div>
             <p class="muted" id="latestPoints" style="font-size:12px"></p>
           </div>
           <div id="latestBars"></div>
@@ -813,7 +819,7 @@
         </ul>
       </div>
 
-      <div class="card" style="border-left:4px solid #2563eb">
+      <div class="card" style="border-left:4px solid #0d9488">
         <h3 style="font-size:15px;margin-bottom:10px">Version 1.2 — 22 March 2026</h3>
         <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px">
           <li><strong style="color:var(--text)">Governor Report</strong> — plain English summary screen with overall verdict, standards at a glance, six governor questions and next steps</li>

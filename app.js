@@ -192,6 +192,7 @@ function renderHome(){
     document.getElementById("latestTag").innerHTML=`<span class="dot dot-${latest.rag}"></span>${RAG_LABEL[latest.rag]}`;
     document.getElementById("latestPct").textContent=Math.round(latest.pct*100)+"%";
     document.getElementById("latestPct").style.color=RAG_COLOR[latest.rag];
+    (function(){var ring=document.querySelector("#latestRing .prog");if(ring){var lp=Math.round(latest.pct*100);ring.style.stroke=RAG_COLOR[latest.rag];ring.style.strokeDashoffset=(2*Math.PI*86*(1-lp/100)).toFixed(2);}})();
     document.getElementById("latestPoints").textContent=`${latest.total}/${TOTAL_MAX_DFE} pts DfE`;
     document.getElementById("latestBars").innerHTML=latest.scores.map(sc=>
       `<div class="score-row">
@@ -488,14 +489,17 @@ function renderResults(){
       ${r.schoolMeta&&r.schoolMeta.trust?`<div style="font-size:11px;padding:2px 8px;background:#f0f9ff;color:#0369a1;border-radius:10px;display:inline-block;margin-bottom:3px;font-weight:500">${r.schoolMeta.trust}</div>`:""}
       <p class="muted" style="font-size:12px">${fmtDate(r.date)}${r.assessor?` · ${r.assessor}`:""}${r.jobTitle?`, ${r.jobTitle}`:""}${leaderBadge}</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-      <div style="text-align:center;padding:10px 12px;background:var(--bg);border-radius:10px;border:2px solid ${RAG_COLOR[r.rag]}">
-        <div style="font-size:9px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;color:${RAG_COLOR[r.rag]};margin-bottom:3px">Overall Score</div>
-        <div style="font-size:36px;font-weight:800;color:${RAG_COLOR[r.rag]};line-height:1">${overallPct}%</div>
-        ${tagHTML(r.rag)}
-        <div class="muted" style="margin-top:3px;font-size:10px">${r.total}/${TOTAL_MAX_DFE} pts</div>
+    <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:12px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;color:${RAG_COLOR[r.rag]};margin-bottom:8px">Overall Score</div>
+      <div class="score-ring" data-value="${overallPct}" style="position:relative;width:132px;height:132px">
+        <svg width="132" height="132" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#f1f5f9" stroke-width="16"></circle>
+          <circle class="prog" cx="100" cy="100" r="86" fill="none" stroke="${RAG_COLOR[r.rag]}" stroke-width="16" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="540.35" transform="rotate(-90 100 100)"></circle>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:800;color:${RAG_COLOR[r.rag]};line-height:1"><b class="num" style="font-size:34px">0</b><span style="font-size:18px;font-weight:700">%</span></div>
       </div>
-      
+      <div style="margin-top:8px">${tagHTML(r.rag)}</div>
+      <div class="muted" style="margin-top:3px;font-size:10px">${r.total}/${TOTAL_MAX_DFE} pts</div>
     </div>
     <div class="rag-boxes" style="gap:6px">
       <div class="rag-box" style="background:var(--red-bg);border:1px solid var(--red-border);padding:8px 4px"><div style="font-size:16px;margin-bottom:1px">🔴</div><div style="font-size:22px;font-weight:800;color:var(--red)">${reds}</div><div style="font-size:10px;color:var(--red);font-weight:600">Needs Attention</div></div>
@@ -503,6 +507,17 @@ function renderResults(){
       <div class="rag-box" style="background:var(--green-bg);border:1px solid var(--green-border);padding:8px 4px"><div style="font-size:16px;margin-bottom:1px">🟢</div><div style="font-size:22px;font-weight:800;color:var(--green)">${greens}</div><div style="font-size:10px;color:var(--green);font-weight:600">Meeting Standard</div></div>
     </div>
     <p style="font-size:10px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">Score based on all 28 questions reflecting explicit DfE requirements across the 6 core standards.</p>`;
+
+  // Animate the overall score ring — count-up + sweep, respects reduced motion.
+  (function(){
+    var el=document.querySelector('#summaryCard .score-ring'); if(!el) return;
+    var tv=parseFloat(el.dataset.value)||0, prog=el.querySelector('.prog'), num=el.querySelector('.num');
+    var C=2*Math.PI*86, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dur=reduce?0:900+tv*2, start=null;
+    function ease(t){return 1-Math.pow(1-t,3);}
+    function frame(ts){if(start===null)start=ts;var t=dur?Math.min((ts-start)/dur,1):1,v=tv*ease(t);if(num)num.textContent=Math.round(v);if(prog)prog.style.strokeDashoffset=(C*(1-v/100)).toFixed(2);if(t<1)requestAnimationFrame(frame);}
+    if(dur===0){if(num)num.textContent=tv;if(prog)prog.style.strokeDashoffset=(C*(1-tv/100)).toFixed(2);}else requestAnimationFrame(frame);
+  })();
 
   const coreCards = r.scores.map(sc=>{
     const s=STANDARDS.find(x=>x.id===sc.id);
@@ -694,8 +709,14 @@ function renderGovernorReport() {
           <p style="font-size:12px;color:rgba(255,255,255,.55)">${fmtDate(r.date)}${r.assessor?` &nbsp;·&nbsp; Completed by ${r.assessor}`:""}${r.jobTitle?`, ${r.jobTitle}`:""}</p>
         </div>
         <div style="text-align:right;flex-shrink:0">
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:4px">Overall Score</div>
-          <div style="font-size:58px;font-weight:800;color:${verdictColor};line-height:1">${overallPct}%</div>
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:8px">Overall Score</div>
+          <div style="position:relative;width:104px;height:104px;display:inline-block">
+            <svg width="104" height="104" viewBox="0 0 200 200" aria-hidden="true">
+              <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="16"></circle>
+              <circle cx="100" cy="100" r="86" fill="none" stroke="${verdictColor}" stroke-width="16" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="${(2*Math.PI*86*(1-overallPct/100)).toFixed(2)}" transform="rotate(-90 100 100)"></circle>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:30px;font-weight:800;color:${verdictColor};line-height:1">${overallPct}%</div>
+          </div>
           <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-top:5px">${RAG_LABEL[r.rag]}</div>
           <div style="display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:11px;color:rgba(255,255,255,.7);margin-top:8px">${meeting} of 6 core standards met</div>
           ${r.pracPct!==undefined?`<div style="margin-top:8px;background:#fffbeb;border-radius:10px;padding:6px 12px;display:inline-block">
